@@ -232,6 +232,16 @@ def add_tab3(tab3, tab4):
 	ent = tk.Entry(tab3)
 	ent.place(x=450, y=500)
 
+	if csv_q3 is not None:
+		df = wqi.q3_main(csv_q3)
+
+	qt = tk.Button(tab2, text='QUIT', command=tab2.quit)
+	qt.place(x=500, y=540)
+	# calc = tk.Button(tab2, text='CALCULATE', command=show_entry_fields)
+	# calc.place(x=350, y=540)
+	viz = tk.Button(tab2, text='VISUALIZE', command=lambda:get_vis_q3(tab4, df))
+	viz.place(x=600, y=540)
+
 def get_vis(tab4, df):
     # pass
 	# print("hi")
@@ -288,6 +298,27 @@ def get_vis_q2(tab4, df):
                 loc="lower left", title="Classes")
 	ax.add_artist(legend1)
 
+
+	canvas = FigureCanvasTkAgg(fig, master=tab4)
+	canvas.draw()
+	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+
+	toolbar = NavigationToolbar2Tk(canvas, tab4)
+	toolbar.update()
+	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+
+def get_vis_q3(tab4, df):
+	tabControl.select(tab4)
+
+	fig, ax = plt.subplots()
+	df_new = df[['Station', 'Sample Date', 'WQI']]
+
+	df_new['Sample Date'] = df_new['Sample Date'].str.split("-", n = 1, expand = True)[0]
+
+	final = df_new.groupby('Sample Date').mean().reset_index()
+
+
+	ax = final.plot.bar(x='Sample Date', y='WQI', rot=0, figsize = (15, 15))
 
 	canvas = FigureCanvasTkAgg(fig, master=tab4)
 	canvas.draw()

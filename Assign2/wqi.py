@@ -1,6 +1,13 @@
 import math
 import numpy as np
 import normalizedQValue
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.experimental import enable_hist_gradient_boosting
+from sklearn.ensemble import HistGradientBoostingRegressor
+pd.options.mode.chained_assignment = None  # default='warn'
 
 def q1(attr):
     ph =0.11
@@ -202,6 +209,30 @@ def q2(attr):
     wqi/=cnt
 
     return wqi
+
+def q3_main(df):
+    df_train = pd.read_csv('./out.csv')
+    df_train = df_train.dropna()
+
+    x_train = df_train[df_train.columns[3:15]]
+    y_train = df_train['WQI']
+
+    x_test = df[df.columns[3:15]]
+
+    sc_X = StandardScaler()
+    x_train = sc_X.fit_transform(x_train)
+    x_test = sc_X.transform(x_test)
+
+    regressor_gb = HistGradientBoostingRegressor()
+    y_pred = np.array([])
+    regressor_gb.fit(x_train, y_train) 
+    y_pred = regressor_gb.predict(x_test)
+
+
+    df_val = pd.DataFrame({'Predicted WQI': y_pred})
+    df['WQI'] = df_val
+
+    return df
 
 
 def q1_main(e1,e2,e3,e4,e5,e6):
