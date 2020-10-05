@@ -219,9 +219,9 @@ def q2_main(ets):
     atts = ["Turbidity", "pH","Color","DO", "BOD","TDS", "Hardness","Cl","No3","So4","Coliform","As","F"]
 
     for i in range(0,len(ets)):
-        if ets[i]!='-':
+        if not np.isnan(ets[i]):
             params[atts[i]] = float(ets[i])
 
     # params['Turbidity'] = ets[0]
-
+    print(params)
     return q2(params)

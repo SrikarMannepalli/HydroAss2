@@ -28,7 +28,7 @@ tabControl.pack(expand = 1, fill ="both")
 
 csv =None
 csv_q2 = None
-
+csv_q3 = None
 
 def add_tab1(tab1):
 	head = tk.Label(tab1, text="TASK 1", font=("Verdana", 20))
@@ -204,8 +204,22 @@ def add_tab2(tab2):
 	qt.place(x=500, y=540)
 	calc = tk.Button(tab2, text='CALCULATE', command=show_entry_fields)
 	calc.place(x=350, y=540)
-	
+
+def add_tab3(tab3):
+	def open_file():
+		file = filedialog.askopenfilename(title = "choose your file",filetypes =[('csv files','*.csv')])
+		global csv_q3
+		csv_q3 = pd.read_csv(file)
+
+	btn = Button(tab3, text ='Choose file', command = lambda:open_file()) 
+	btn.place(x=420, y=450)
+	out_name = tk.Label(tab3, text="Output File Name")
+	out_name.place(x=200, y=500)
+	ent = tk.Entry(tab3)
+	ent.place(x=450, y=500)
+
 homepage.add_home(home)
 add_tab1(tab1)
 add_tab2(tab2)
+add_tab3(tab3)
 root.mainloop()
