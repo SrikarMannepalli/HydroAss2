@@ -39,7 +39,7 @@ tabControl.add(tab1, text ='TASK 1')
 tabControl.add(tab2, text ='TASK 2') 
 tabControl.add(tab3, text ='TASK 3') 
 tabControl.add(tab4, text ='VIZ 1') 
-tabControl.add(tab5, text ='VIZ 2') 
+# tabControl.add(tab5, text ='VIZ 2') 
 
 tabControl.pack(expand = 1, fill ="both") 
 
@@ -313,26 +313,32 @@ def add_tab3(tab3, tab4):
 	viz.place(x=600, y=540)
 
 def get_vis(tab4, df):
-    # pass
 	# print("hi")
 	tabControl.select(tab4)
 	df_new = df[['Name', 'lat', 'long', 'WQI', 'WQC']]
 	# print(df_new)
 	# print(df.loc)
 	# df_final = df.loc[df.groupby(["Name"])["WQI"].idxmin()]
-	df_final = df_new
+	df_add = df.loc[df.groupby(["Name"])["WQI"].idxmin()]
+	df_final = df_new.append(df_add)
 	# df_final = df_new.groupby(['Name'])['WQI'].idxmax().reset_index()
 
 	# print(df_final)
 	fig, ax = plt.subplots()
 	ind_img = mpimg.imread('./india-rivers-map.jpg')
 	plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
-	# labels = ["C1", "C2", "C3", "C4", "C5"]
+	colors = {'Excellent':'blue','Good':'c','Medium':'purple','Bad':'violet','Very Bad':'red'}
 	classes = ["Very Bad", "Bad", "Medium", "Good", "Excellent"]
 	labs=[]
 	for clsa in df_final["WQC"]:
 		labs.append(classes.index(clsa))
+	
+	# for longi,lat in zip(df_final["long"], df_final["lat"]):
+	# 	plt.scatter(longi, lat) 
+	
+	# plt.show()
 	scatter = ax.scatter(df_final["long"], df_final["lat"],c=labs,s=10)
+	print(*scatter.legend_elements()[0])
 	legend1 = ax.legend(*scatter.legend_elements(),
                 loc="lower left", title="Classes")
 	ax.add_artist(legend1)
@@ -347,35 +353,24 @@ def get_vis(tab4, df):
 	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
 def get_vis_q2(tab5, df):
-	tabControl.select(tab5)
-	df_new = df[['STATION', 'OIP', 'WQC','lats','longs']]
+	# tabControl.select(tab5)
 
-	fig, ax = plt.subplots()
-	ind_img = mpimg.imread('./india-rivers-map.jpg')
-	plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
-	plt.imshow(ind_img, alpha=0.75)
-	# # labels = ["C1", "C2", "C3", "C4", "C5"]
-	classes = ["Heavily polluted", "Polluted", "Slightly polluted", "Acceptable", "Excellent"]
-	labs=[]
-	for clsa in df_new["WQC"]:
-		labs.append(classes.index(clsa))
-	lats = []
-	longs = []
-	# geolocator = Nominatim(user_agent="My Project")
-	# print(df_new)
-	scatter = ax.scatter(df_new["longs"], df_new["lats"],c=labs,s=10)
-	legend1 = ax.legend(*scatter.legend_elements(),
-                loc="lower left", title="Classes")
-	ax.add_artist(legend1)
-
-
-	canvas = FigureCanvasTkAgg(fig, master=tab5)
-	canvas.draw()
-	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-
-	toolbar = NavigationToolbar2Tk(canvas, tab5)
-	toolbar.update()
-	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+    fig = plt.figure(figsize=(10,10))
+    title = "Plot based on water quality"
+    # plt.title(title)
+    ind_img = mpimg.imread('./india-rivers-map.jpg')
+    plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
+    latitudes = df['lats'].to_numpy()
+    longitudes = df['longs'].to_numpy()
+    station = df['STATION'].to_numpy()
+    wqis = df['OIP'].to_numpy()
+    wqc = df['WQC'].to_numpy()
+    colors = {'Excellent':'blue','Acceptable':'c','Slightly polluted':'purple','Polluted':'violet','Heavily polluted':'red'}
+    #colors = sb.heatmap(normalised)
+    for i in range(len(wqis)):
+        plt.scatter(longitudes[i],latitudes[i], color=colors[wqc[i]],s=100, alpha=0.75, label=station[i]+":"+str(wqc[i]))
+    plt.legend(title="WQI", loc="lower right")
+    plt.show()
 
 def get_vis_q3(tab4, df):
 	tabControl.select(tab4)
