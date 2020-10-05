@@ -7,7 +7,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.experimental import enable_hist_gradient_boosting
 from sklearn.ensemble import HistGradientBoostingRegressor
-from sklearn.ensemble import RandomForestRegressor
 pd.options.mode.chained_assignment = None  # default='warn'
 
 def q1(attr):
@@ -211,9 +210,9 @@ def q2(attr):
 
     return wqi
 
-def q3_main(df):
-    df= pd.read_csv('./1.csv')
-    df_train = df.dropna()
+def q3_main(df, df_train):
+    # df_train = pd.read_csv('./timeseries_train.csv')
+    # df_train = df.dropna()
 
     x_train = df_train[df_train.columns[3:15]]
     y_train = df_train['WQI']
@@ -225,7 +224,6 @@ def q3_main(df):
     x_test = sc_X.transform(x_test)
 
     regressor_gb = HistGradientBoostingRegressor()
-    regressor_gb = RandomForestRegressor()
     y_pred = np.array([])
     regressor_gb.fit(x_train, y_train) 
     y_pred = regressor_gb.predict(x_test)
