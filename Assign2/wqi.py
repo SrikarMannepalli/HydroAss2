@@ -7,6 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.experimental import enable_hist_gradient_boosting
 from sklearn.ensemble import HistGradientBoostingRegressor
+from sklearn.ensemble import RandomForestRegressor
 pd.options.mode.chained_assignment = None  # default='warn'
 
 def q1(attr):
@@ -224,6 +225,7 @@ def q3_main(df):
     x_test = sc_X.transform(x_test)
 
     regressor_gb = HistGradientBoostingRegressor()
+    regressor_gb = RandomForestRegressor()
     y_pred = np.array([])
     regressor_gb.fit(x_train, y_train) 
     y_pred = regressor_gb.predict(x_test)

@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import matplotlib.image as mpimg
 from geopy.geocoders import Nominatim
+import time
 
 root = tk.Tk()
 root.wm_title("Water Quality Index Estimation Tool")
@@ -115,8 +116,8 @@ def add_tab1(tab1, tab4):
 				wq_clss = classes[3]
 			else:
 				wq_clss = classes[4]
-    			
-    				
+				
+					
 			wq = tk.Label(tab1,text=qual_ind, font=("Verdana",25))
 			wq_lab = tk.Label(tab1,text="WQI", font=("Verdana",30))
 			wq_class = tk.Label(tab1,text="WQC", font=("Verdana",30))
@@ -193,7 +194,7 @@ def add_tab2(tab2, tab4):
 		else:
 			evals = [float(et.get()) for et in ets[:-1]]
 			qual_ind = wqi.q2_main(evals)
-			print(qual_ind)
+			# print(qual_ind)
 			if qual_ind>=0 and qual_ind<=1:
 				wq_clss = classes2[4]
 			elif qual_ind>1 and qual_ind<=2:
@@ -204,8 +205,8 @@ def add_tab2(tab2, tab4):
 				wq_clss = classes2[1]
 			elif qual_ind>8:
 				wq_clss = classes2[0]
-    			
-    				
+				
+					
 			wq = tk.Label(tab2,text=qual_ind, font=("Verdana",25))
 			wq_lab = tk.Label(tab2,text="WQI", font=("Verdana",30))
 			wq_class = tk.Label(tab2,text="WQC", font=("Verdana",30))
@@ -229,49 +230,80 @@ def add_tab3(tab3, tab4):
 		csv_q3 = pd.read_csv(file)
 
 	btn = Button(tab3, text ='Choose file', command = lambda:open_file()) 
-	btn.place(x=420, y=450)
+	btn.place(x=420, y=320)
 	out_name = tk.Label(tab3, text="Output File Name")
-	out_name.place(x=200, y=500)
+	out_name.place(x=200, y=420)
 	ent = tk.Entry(tab3)
-	ent.place(x=450, y=500)
+	ent.place(x=450, y=420) 
 
 	# df = pd.DataFrame()
 	# if csv_q3 is not None:
 	# 	df = wqi.q3_main(csv_q3)
 
+	df_train = pd.read_csv('./timeseries_train.csv')
+	df_name = df_train.groupby('Name').mean().reset_index()
+
+	n = tk.StringVar() 
+	
+	st_name = tk.Label(tab3, text="Station Name")
+	st = ttk.Combobox(tab3, text = "Station", width = 40, textvariable = n) 
+	st_name.place(x = 200, y = 200)
+	st.place(x=350, y=200)
+
+	# # Adding combobox drop down list 
+	st['values'] = df_name['Name'].tolist()
+
+	def ok():
+		val = n.get()
+		dfC = df_train[df_train['Name'] == val]
+		df_q3 = wqi.q3_main(dfC, df_train)
+
+		return df_q3
+
+
+
 	def show_entry_fields():
-		# if csv_q3 is not None:
 		global df_q3
-		df_q3 = wqi.q3_main(csv_q3)
+		if csv_q3 is not None:
+			df_q3 = wqi.q3_main(csv_q3, df_train)
+
+		else:
+			df_q3 = ok()
 		
 	qt = tk.Button(tab3, text='QUIT', command=tab3.quit)
-	qt.place(x=500, y=540)
+	qt.place(x=450, y=500)
 	calc = tk.Button(tab3, text='CALCULATE', command=show_entry_fields)
-	calc.place(x=350, y=540)
+	calc.place(x=300, y=500)
 	viz = tk.Button(tab3, text='VISUALIZE', command=lambda:get_vis_q3(tab4, df_q3))
-	viz.place(x=600, y=540)
+	viz.place(x=550, y=500)
 
 def get_vis(tab4, df):
-    # pass
 	# print("hi")
 	tabControl.select(tab4)
 	df_new = df[['Name', 'lat', 'long', 'WQI', 'WQC']]
 	# print(df_new)
 	# print(df.loc)
 	# df_final = df.loc[df.groupby(["Name"])["WQI"].idxmin()]
-	df_final = df_new
+	df_add = df.loc[df.groupby(["Name"])["WQI"].idxmin()]
+	df_final = df_new.append(df_add)
 	# df_final = df_new.groupby(['Name'])['WQI'].idxmax().reset_index()
 
 	# print(df_final)
 	fig, ax = plt.subplots()
 	ind_img = mpimg.imread('./india-rivers-map.jpg')
 	plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
-	# labels = ["C1", "C2", "C3", "C4", "C5"]
+	colors = {'Excellent':'blue','Good':'c','Medium':'purple','Bad':'violet','Very Bad':'red'}
 	classes = ["Very Bad", "Bad", "Medium", "Good", "Excellent"]
 	labs=[]
 	for clsa in df_final["WQC"]:
 		labs.append(classes.index(clsa))
+	
+	# for longi,lat in zip(df_final["long"], df_final["lat"]):
+	# 	plt.scatter(longi, lat) 
+	
+	# plt.show()
 	scatter = ax.scatter(df_final["long"], df_final["lat"],c=labs,s=10)
+	print(*scatter.legend_elements()[0])
 	legend1 = ax.legend(*scatter.legend_elements(),
                 loc="lower left", title="Classes")
 	ax.add_artist(legend1)
@@ -285,57 +317,41 @@ def get_vis(tab4, df):
 	toolbar.update()
 	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-def get_vis_q2(tab4, df):
-	tabControl.select(tab4)
-	df_new = df[['STATION', 'OIP', 'WQC','lats','longs']]
+def get_vis_q2(tab5, df):
+	# tabControl.select(tab5)
 
-	fig, ax = plt.subplots()
-	ind_img = mpimg.imread('./india-rivers-map.jpg')
-	plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
-	plt.imshow(ind_img, alpha=0.75)
-	# # labels = ["C1", "C2", "C3", "C4", "C5"]
-	classes = ["Heavily polluted", "Polluted", "Slightly polluted", "Acceptable", "Excellent"]
-	labs=[]
-	for clsa in df_new["WQC"]:
-		labs.append(classes.index(clsa))
-	lats = []
-	longs = []
-	# geolocator = Nominatim(user_agent="My Project")
-	# print(df_new)
-	scatter = ax.scatter(df_new["longs"], df_new["lats"],c=labs,s=10)
-	legend1 = ax.legend(*scatter.legend_elements(),
-                loc="lower left", title="Classes")
-	ax.add_artist(legend1)
-
-
-	canvas = FigureCanvasTkAgg(fig, master=tab4)
-	canvas.draw()
-	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-
-	toolbar = NavigationToolbar2Tk(canvas, tab4)
-	toolbar.update()
-	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+    fig = plt.figure(figsize=(10,10))
+    title = "Plot based on water quality"
+    # plt.title(title)
+    ind_img = mpimg.imread('./india-rivers-map.jpg')
+    plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
+    latitudes = df['lats'].to_numpy()
+    longitudes = df['longs'].to_numpy()
+    station = df['STATION'].to_numpy()
+    wqis = df['OIP'].to_numpy()
+    wqc = df['WQC'].to_numpy()
+    colors = {'Excellent':'blue','Acceptable':'c','Slightly polluted':'purple','Polluted':'violet','Heavily polluted':'red'}
+    #colors = sb.heatmap(normalised)
+    for i in range(len(wqis)):
+        plt.scatter(longitudes[i],latitudes[i], color=colors[wqc[i]],s=100, alpha=0.75, label=station[i]+":"+str(wqc[i]))
+    plt.legend(title="WQI", loc="lower right")
+    plt.show()
 
 def get_vis_q3(tab4, df):
-	tabControl.select(tab4)
+	
 	# print(df)
-	fig, ax = plt.subplots()
+	fig = plt.figure(figsize=(10,10))
 	df_new = df[['Station', 'Sample Date', 'WQI']]
 
 	df_new['Sample Date'] = df_new['Sample Date'].str.split("-", n = 1, expand = True)[0]
 
-	final = df_new.groupby('Sample Date').mean().reset_index()
+	final = df_new.groupby('Sample Date').max().reset_index()
 
 	# print(final)
 	# ax = final.plot.bar(x="Sample Date", y="WQI", rot=0, figsize = (15, 15))
 	plt.bar(x=final["Sample Date"],height=final["WQI"])
-	canvas = FigureCanvasTkAgg(fig, master=tab4)
-	canvas.draw()
-	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
-
-	toolbar = NavigationToolbar2Tk(canvas, tab4)
-	toolbar.update()
-	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+	plt.show()
+	
 
 homepage.add_home(home)
 add_tab1(tab1,tab4)
