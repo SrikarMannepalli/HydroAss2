@@ -17,10 +17,15 @@ from matplotlib.figure import Figure
 import matplotlib.image as mpimg
 from geopy.geocoders import Nominatim
 
+
+def close_window():
+  exit(0)
+
 root = tk.Tk()
 root.wm_title("Water Quality Index Estimation Tool")
 root.geometry("900x600")
 tabControl = ttk.Notebook(root) 
+root.protocol("WM_DELETE_WINDOW", close_window)
 
 
 home = ttk.Frame(tabControl)
@@ -28,11 +33,13 @@ tab1 = ttk.Frame(tabControl)
 tab2 = ttk.Frame(tabControl) 
 tab3 = ttk.Frame(tabControl) 
 tab4 = ttk.Frame(tabControl) 
+tab5 = ttk.Frame(tabControl) 
 tabControl.add(home, text ='HOME') 
 tabControl.add(tab1, text ='TASK 1') 
 tabControl.add(tab2, text ='TASK 2') 
 tabControl.add(tab3, text ='TASK 3') 
-tabControl.add(tab4, text ='VIZ') 
+tabControl.add(tab4, text ='VIZ 1') 
+tabControl.add(tab5, text ='VIZ 2') 
 
 tabControl.pack(expand = 1, fill ="both") 
 
@@ -125,16 +132,43 @@ def add_tab1(tab1, tab4):
 			wq_lab.place(x=700, y=250)
 			wq_class.place(x=700, y=350)
 			wq_class_val.place(x=700, y=400)
+	
+	def show_entry_fields1():
+		
+		evals = [float(et.get()) for et in ets[:-1]]
+		qual_ind = wqi.q1_main(evals[0],evals[1],evals[2],evals[3],evals[4],evals[5])
+		if qual_ind>=0 and qual_ind<25:
+			wq_clss = classes[0]
+		elif qual_ind>=25 and qual_ind<50:
+			wq_clss = classes[1]
+		elif qual_ind>=50 and qual_ind<70:
+			wq_clss = classes[2]
+		elif qual_ind>=70 and qual_ind<90:
+			wq_clss = classes[3]
+		else:
+			wq_clss = classes[4]
+			
+				
+		wq = tk.Label(tab1,text=qual_ind, font=("Verdana",15))
+		wq_lab = tk.Label(tab1,text="WQI", font=("Verdana",20))
+		wq_class = tk.Label(tab1,text="WQC", font=("Verdana",20))
+		wq_class_val = tk.Label(tab1,text=wq_clss, font=("Verdana",15))
+		wq.place(x=700, y=300)
+		wq_lab.place(x=700, y=250)
+		wq_class.place(x=700, y=350)
+		wq_class_val.place(x=700, y=400)
 
 	qt = tk.Button(tab1, text='QUIT', command=tab1.quit)
 	qt.place(x=500, y=500)
-	calc = tk.Button(tab1, text='CALCULATE', command=show_entry_fields)
-	calc.place(x=350, y=500)
+	calc = tk.Button(tab1, text='CALCULATE', command=show_entry_fields1)
+	calc.place(x=350, y=350)
+	calc1 = tk.Button(tab1, text='CALCULATE', command=show_entry_fields)
+	calc1.place(x=350, y=500)
 	viz = tk.Button(tab1, text='VISUALIZE', command=lambda:get_vis(tab4, csv))
 	viz.place(x=600, y=500)
 
 
-def add_tab2(tab2, tab4):
+def add_tab2(tab2, tab5):
 	head = tk.Label(tab2, text="TASK 2", font=("Verdana", 20))
 	head.place(x=400,y=10)
 	atts = ["Turbidity", "pH","Color","DO", "BOD","TDS", "Hardness","Cl","No3","So4","Coliform","As","F"]
@@ -215,11 +249,38 @@ def add_tab2(tab2, tab4):
 			wq_class.place(x=700, y=350)
 			wq_class_val.place(x=700, y=400)
 
+	def show_entry_fields1():
+		evals = [float(et.get()) for et in ets[:-1]]
+		qual_ind = wqi.q2_main(evals)
+		print(qual_ind)
+		if qual_ind>=0 and qual_ind<=1:
+			wq_clss = classes2[4]
+		elif qual_ind>1 and qual_ind<=2:
+			wq_clss = classes2[3]
+		elif qual_ind>2 and qual_ind<=4:
+			wq_clss = classes2[2]
+		elif qual_ind>4 and qual_ind<=8:
+			wq_clss = classes2[1]
+		elif qual_ind>8:
+			wq_clss = classes2[0]
+			
+				
+		wq = tk.Label(tab2,text=qual_ind, font=("Verdana",15))
+		wq_lab = tk.Label(tab2,text="OIP", font=("Verdana",20))
+		wq_class = tk.Label(tab2,text="WQC", font=("Verdana",20))
+		wq_class_val = tk.Label(tab2,text=wq_clss, font=("Verdana",15))
+		wq.place(x=700, y=300)
+		wq_lab.place(x=700, y=250)
+		wq_class.place(x=700, y=350)
+		wq_class_val.place(x=700, y=400)
+
 	qt = tk.Button(tab2, text='QUIT', command=tab2.quit)
 	qt.place(x=500, y=540)
+	calc1 = tk.Button(tab2, text='CALCULATE', command=show_entry_fields1)
+	calc1.place(x=700, y=300)
 	calc = tk.Button(tab2, text='CALCULATE', command=show_entry_fields)
 	calc.place(x=350, y=540)
-	viz = tk.Button(tab2, text='VISUALIZE', command=lambda:get_vis_q2(tab4, csv_q2))
+	viz = tk.Button(tab2, text='VISUALIZE', command=lambda:get_vis_q2(tab5, csv_q2))
 	viz.place(x=600, y=540)
 
 def add_tab3(tab3, tab4):
@@ -285,8 +346,8 @@ def get_vis(tab4, df):
 	toolbar.update()
 	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
-def get_vis_q2(tab4, df):
-	tabControl.select(tab4)
+def get_vis_q2(tab5, df):
+	tabControl.select(tab5)
 	df_new = df[['STATION', 'OIP', 'WQC','lats','longs']]
 
 	fig, ax = plt.subplots()
@@ -308,11 +369,11 @@ def get_vis_q2(tab4, df):
 	ax.add_artist(legend1)
 
 
-	canvas = FigureCanvasTkAgg(fig, master=tab4)
+	canvas = FigureCanvasTkAgg(fig, master=tab5)
 	canvas.draw()
 	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
 
-	toolbar = NavigationToolbar2Tk(canvas, tab4)
+	toolbar = NavigationToolbar2Tk(canvas, tab5)
 	toolbar.update()
 	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
@@ -324,7 +385,7 @@ def get_vis_q3(tab4, df):
 
 	df_new['Sample Date'] = df_new['Sample Date'].str.split("-", n = 1, expand = True)[0]
 
-	final = df_new.groupby('Sample Date').mean().reset_index()
+	final = df_new.groupby('Sample Date','Station').mean().reset_index()
 
 	# print(final)
 	# ax = final.plot.bar(x="Sample Date", y="WQI", rot=0, figsize = (15, 15))
@@ -339,7 +400,7 @@ def get_vis_q3(tab4, df):
 
 homepage.add_home(home)
 add_tab1(tab1,tab4)
-add_tab2(tab2,tab4)
+add_tab2(tab2,tab5)
 add_tab3(tab3,tab4)
 # get_vis(tab4)
 root.mainloop()
