@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 def q1(attr):
     ph =0.11
@@ -12,33 +13,35 @@ def q1(attr):
 
     denom = 0
     num = 0
-    if "ph" in attr:
+    # print(attr)
+    if "ph" in attr and attr["ph"]!= np.nan:
         num+= ph*attr["ph"]
         denom+=ph
     
-    if "turb" in attr:
+    if "turb" in attr and attr["turb"] != np.nan:
         num+= turb*attr["turb"]
         denom+=turb
     
-    if "tdv" in attr:
+    if "tdv" in attr and attr["tdv"] != np.nan:
         num+= tdv*attr["tdv"]
         denom+=tdv
     
-    if "nitrates" in attr:
+    if "nitrates" in attr and np.isnan(attr['nitrates']):
         num+= nitrates*attr["nitrates"]
         denom+=nitrates
     
-    if "temp" in attr:
+    if "temp" in attr and not np.isnan(attr['temp']):
         num+= temp*attr["temp"]
         denom+=temp
     
-    if "fecalcol" in attr:
+    if "fecalcol" in attr and not np.isnan(attr['fecalcol']):
         num+= fecalcol*attr["fecalcol"]
         denom+=fecalcol
     
     if denom==0:
         return -1
     
+    # print(num, denom)
     wqi = num/denom
 
     return wqi
@@ -46,7 +49,7 @@ def q1(attr):
 
 def q2(attr):
     # for i in attr:
-    print(attr)
+    # print(attr)
     # assuming we take mean of existing attributes
     cnt=0
     param_vals = []
@@ -191,12 +194,12 @@ def q2(attr):
         
 def q1_main(e1,e2,e3,e4,e5,e6):
     params = {}
-    params["ph"] = e1
-    params["temp"] = e2
-    params["turb"] = e3
-    params["tdv"] = e4
-    params["nitrates"] = e5
-    params["fecalcol"] = e6
+    params["ph"] = float(e1)
+    params["temp"] = float(e2)
+    params["turb"] = float(e3)
+    params["tdv"] = float(e4)
+    params["nitrates"] = float(e5)
+    params["fecalcol"] = float(e6)
 
     return q1(params)
 
@@ -207,8 +210,10 @@ def q2_main(ets):
     # use the same atts array as in gui.py
     atts = ["Turbidity", "pH","Color","DO", "BOD","TDS", "Hardness","Cl","No3","So4","Coliform","As","F"]
 
-    for i in range(4,len(ets)):
+    for i in range(0,len(ets)):
         if ets[i]!='-':
-            params[atts[i-4]] = float(ets[i])
+            params[atts[i]] = float(ets[i])
+
+    # params['Turbidity'] = ets[0]
 
     return q2(params)

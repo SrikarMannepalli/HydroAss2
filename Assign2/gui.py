@@ -1,4 +1,5 @@
 import wqi
+import vis
 import tkinter as tk
 from tkinter import ttk 
 from tkinter import * 
@@ -6,6 +7,7 @@ from tkinter.ttk import *
 from tkinter import filedialog
 import pandas as pd
 import homepage
+import numpy as np
 
 root = tk.Tk()
 root.wm_title("Water Quality Index Estimation Tool")
@@ -60,8 +62,12 @@ def add_tab1(tab1):
 		qual_cls_vec = []
 		if csv is not None:
 			for i in range(len(csv)) : 
-				print(csv.iloc[i, 0], csv.iloc[i, 2]) 
-				qual_ind = wqi.q1_main(csv.iloc[i, 0],csv.iloc[i, 1],csv.iloc[i, 2],csv.iloc[i, 3],csv.iloc[i, 4],csv.iloc[i, 5])
+				# print(csv.iloc[i, 0], csv.iloc[i, 2]) 
+				if 'NIT' not in csv:
+					csv['NIT'] = 0.5
+				if 'FEC' not in csv:
+					csv['FEC'] = 0
+				qual_ind = wqi.q1_main(csv.iloc[i, 6],csv.iloc[i, 3],csv.iloc[i, 11],csv.iloc[i, 5],csv.iloc[i, 18],csv.iloc[i, 19])
 				# tk.Label(tab1,text=qual_ind).grid(row=i,column=7)
 				if qual_ind>=0 and qual_ind<25:
 					wq_clss = classes[0]
@@ -79,7 +85,11 @@ def add_tab1(tab1):
 			csv["WQI"] = qual_ind_vec
 			csv["WQC"] = qual_cls_vec
 			outputfname = ets[-1].get()
+
+			if not outputfname:
+				outputfname = "out.csv"
 			csv.to_csv(outputfname, index=False)
+			vis.q1(csv)
 		else:
 			evals = [float(et.get()) for et in ets[:-1]]
 			qual_ind = wqi.q1_main(evals[0],evals[1],evals[2],evals[3],evals[4],evals[5])
@@ -114,7 +124,7 @@ def add_tab2(tab2):
 	head = tk.Label(tab2, text="TASK 2", font=("Verdana", 20))
 	head.place(x=400,y=10)
 	atts = ["Turbidity", "pH","Color","DO", "BOD","TDS", "Hardness","Cl","No3","So4","Coliform","As","F"]
-	classes = ["Very Bad", "Bad", "Medium", "Good", "Excellent"]
+	classes2 = ["Heavily polluted", "Polluted", "Slightly polluted", "Acceptable", "Excellent"]
 	labs = []
 	ets= []
 	for i in range(0, len(atts)):
@@ -140,19 +150,19 @@ def add_tab2(tab2):
 		qual_cls_vec = []
 		if csv_q2 is not None:
 			for i in range(len(csv_q2)) : 
-				# print(csv.iloc[i, 0], csv.iloc[i, 2]) 
-				pars = [csv_q2.iloc[i,j] for j in range(0, 17)]
+				# print(csv_q2.iloc[i, 0], csv_q2.iloc[i, 2]) 
+				pars = [csv_q2.iloc[i,j] for j in range(4, 17)]
 				qual_ind = wqi.q2_main(pars)
-				if qual_ind>=0 and qual_ind<25:
-					wq_clss = classes[0]
-				elif qual_ind>=25 and qual_ind<50:
-					wq_clss = classes[1]
-				elif qual_ind>=50 and qual_ind<70:
-					wq_clss = classes[2]
-				elif qual_ind>=70 and qual_ind<90:
-					wq_clss = classes[3]
-				else:
-					wq_clss = classes[4]
+				if qual_ind>=0 and qual_ind<=1:
+					wq_clss = classes2[4]
+				elif qual_ind>1 and qual_ind<=2:
+					wq_clss = classes2[3]
+				elif qual_ind>2 and qual_ind<=4:
+					wq_clss = classes2[2]
+				elif qual_ind>4 and qual_ind<=8:
+					wq_clss = classes2[1]
+				elif qual_ind>8 and qual_ind<=16:
+					wq_clss = classes2[0]
 				qual_ind_vec.append(qual_ind)
 				qual_cls_vec.append(wq_clss)
 				# tk.Label(tab1,text=qual_ind).grid(row=i,column=7)
@@ -160,20 +170,24 @@ def add_tab2(tab2):
 			csv_q2["OIP"] = qual_ind_vec
 			csv_q2["WQC"] = qual_cls_vec
 			outputfname = ets[-1].get()
+			if not outputfname:
+				outputfname = "out.csv"
 			csv_q2.to_csv(outputfname, index=False)
+
+			vis.q2(csv_q2)
 		else:
 			evals = [float(et.get()) for et in ets[:-1]]
 			qual_ind = wqi.q2_main(evals)
-			if qual_ind>=0 and qual_ind<25:
-				wq_clss = classes[0]
-			elif qual_ind>=25 and qual_ind<50:
-				wq_clss = classes[1]
-			elif qual_ind>=50 and qual_ind<70:
-				wq_clss = classes[2]
-			elif qual_ind>=70 and qual_ind<90:
-				wq_clss = classes[3]
-			else:
-				wq_clss = classes[4]
+			if qual_ind>=0 and qual_ind<=1:
+					wq_clss = classes2[4]
+			elif qual_ind>1 and qual_ind<=2:
+				wq_clss = classes2[3]
+			elif qual_ind>2 and qual_ind<=4:
+				wq_clss = classes2[2]
+			elif qual_ind>4 and qual_ind<=8:
+				wq_clss = classes2[1]
+			elif qual_ind>8 and qual_ind<=16:
+				wq_clss = classes2[0]
     			
     				
 			wq = tk.Label(tab2,text=qual_ind, font=("Verdana",25))
