@@ -118,19 +118,48 @@ def add_tab1(tab1, tab4):
 				wq_clss = classes[4]
 				
 					
-			wq = tk.Label(tab1,text=qual_ind, font=("Verdana",25))
-			wq_lab = tk.Label(tab1,text="WQI", font=("Verdana",30))
-			wq_class = tk.Label(tab1,text="WQC", font=("Verdana",30))
-			wq_class_val = tk.Label(tab1,text=wq_clss, font=("Verdana",25))
+			wq = tk.Label(tab1,text=qual_ind, font=("Verdana",15))
+			wq_lab = tk.Label(tab1,text="WQI", font=("Verdana",20))
+			wq_class = tk.Label(tab1,text="WQC", font=("Verdana",20))
+			wq_class_val = tk.Label(tab1,text=wq_clss, font=("Verdana",15))
 			wq.place(x=700, y=300)
 			wq_lab.place(x=700, y=250)
 			wq_class.place(x=700, y=350)
 			wq_class_val.place(x=700, y=400)
+	
+	def show_entry_fields1():
+		qual_ind_vec = []
+		qual_cls_vec = []
+		
+		evals = [float(et.get()) for et in ets[:-1]]
+		qual_ind = wqi.q1_main(evals[0],evals[1],evals[2],evals[3],evals[4],evals[5])
+		if qual_ind>=0 and qual_ind<25:
+			wq_clss = classes[0]
+		elif qual_ind>=25 and qual_ind<50:
+			wq_clss = classes[1]
+		elif qual_ind>=50 and qual_ind<70:
+			wq_clss = classes[2]
+		elif qual_ind>=70 and qual_ind<90:
+			wq_clss = classes[3]
+		else:
+			wq_clss = classes[4]
+			
+				
+		wq = tk.Label(tab1,text=qual_ind, font=("Verdana",15))
+		wq_lab = tk.Label(tab1,text="WQI", font=("Verdana",20))
+		wq_class = tk.Label(tab1,text="WQC", font=("Verdana",20))
+		wq_class_val = tk.Label(tab1,text=wq_clss, font=("Verdana",15))
+		wq.place(x=700, y=300)
+		wq_lab.place(x=700, y=250)
+		wq_class.place(x=700, y=350)
+		wq_class_val.place(x=700, y=400)
 
 	qt = tk.Button(tab1, text='QUIT', command=tab1.quit)
 	qt.place(x=500, y=500)
 	calc = tk.Button(tab1, text='CALCULATE', command=show_entry_fields)
 	calc.place(x=350, y=500)
+	calc1 = tk.Button(tab1, text='CALCULATE', command=show_entry_fields1)
+	calc1.place(x=350, y=350)
 	viz = tk.Button(tab1, text='VISUALIZE', command=lambda:get_vis(tab4, csv))
 	viz.place(x=600, y=500)
 
@@ -207,23 +236,54 @@ def add_tab2(tab2, tab4):
 				wq_clss = classes2[0]
 				
 					
-			wq = tk.Label(tab2,text=qual_ind, font=("Verdana",25))
-			wq_lab = tk.Label(tab2,text="WQI", font=("Verdana",30))
-			wq_class = tk.Label(tab2,text="WQC", font=("Verdana",30))
-			wq_class_val = tk.Label(tab2,text=wq_clss, font=("Verdana",25))
+			wq = tk.Label(tab2,text=qual_ind, font=("Verdana",15))
+			wq_lab = tk.Label(tab2,text="OIP", font=("Verdana",20))
+			wq_class = tk.Label(tab2,text="WQC", font=("Verdana",20))
+			wq_class_val = tk.Label(tab2,text=wq_clss, font=("Verdana",15))
 			wq.place(x=700, y=300)
 			wq_lab.place(x=700, y=250)
 			wq_class.place(x=700, y=350)
 			wq_class_val.place(x=700, y=400)
+	
+	def show_entry_fields1():
+
+		evals = [float(et.get()) for et in ets[:-1]]
+		qual_ind = wqi.q2_main(evals)
+		# print(qual_ind)
+		if qual_ind>=0 and qual_ind<=1:
+			wq_clss = classes2[4]
+		elif qual_ind>1 and qual_ind<=2:
+			wq_clss = classes2[3]
+		elif qual_ind>2 and qual_ind<=4:
+			wq_clss = classes2[2]
+		elif qual_ind>4 and qual_ind<=8:
+			wq_clss = classes2[1]
+		elif qual_ind>8:
+			wq_clss = classes2[0]
+			
+				
+		wq = tk.Label(tab2,text=qual_ind, font=("Verdana",15))
+		wq_lab = tk.Label(tab2,text="OIP", font=("Verdana",20))
+		wq_class = tk.Label(tab2,text="WQC", font=("Verdana",20))
+		wq_class_val = tk.Label(tab2,text=wq_clss, font=("Verdana",15))
+		wq.place(x=700, y=300)
+		wq_lab.place(x=700, y=250)
+		wq_class.place(x=700, y=350)
+		wq_class_val.place(x=700, y=400)
 
 	qt = tk.Button(tab2, text='QUIT', command=tab2.quit)
 	qt.place(x=500, y=540)
 	calc = tk.Button(tab2, text='CALCULATE', command=show_entry_fields)
 	calc.place(x=350, y=540)
+	calc1 = tk.Button(tab2, text='CALCULATE', command=show_entry_fields1)
+	calc1.place(x=650, y=150)
 	viz = tk.Button(tab2, text='VISUALIZE', command=lambda:get_vis_q2(tab4, csv_q2))
 	viz.place(x=600, y=540)
 
 def add_tab3(tab3, tab4):
+	head = tk.Label(tab3, text="TASK 3", font=("Verdana", 20))
+	head.place(x=400,y=10)
+
 	def open_file():
 		file = filedialog.askopenfilename(title = "choose your file",filetypes =[('csv files','*.csv')])
 		global csv_q3
@@ -239,7 +299,7 @@ def add_tab3(tab3, tab4):
 	# df = pd.DataFrame()
 	# if csv_q3 is not None:
 	# 	df = wqi.q3_main(csv_q3)
-
+	# global csv_q3
 	df_train = pd.read_csv('./timeseries_train.csv')
 	df_name = df_train.groupby('Name').mean().reset_index()
 
@@ -266,7 +326,7 @@ def add_tab3(tab3, tab4):
 		global df_q3
 		if csv_q3 is not None:
 			df_q3 = wqi.q3_main(csv_q3, df_train)
-
+			df_q3.to_csv(ent.get(),index=False)
 		else:
 			df_q3 = ok()
 		
@@ -279,7 +339,9 @@ def add_tab3(tab3, tab4):
 
 def get_vis(tab4, df):
 	# print("hi")
-	tabControl.select(tab4)
+	fig = plt.figure(figsize=(10,10))
+
+	# tabControl.select(tab4)
 	df_new = df[['Name', 'lat', 'long', 'WQI', 'WQC']]
 	# print(df_new)
 	# print(df.loc)
@@ -289,7 +351,7 @@ def get_vis(tab4, df):
 	# df_final = df_new.groupby(['Name'])['WQI'].idxmax().reset_index()
 
 	# print(df_final)
-	fig, ax = plt.subplots()
+	# fig, ax = plt.subplots()
 	ind_img = mpimg.imread('./india-rivers-map.jpg')
 	plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
 	colors = {'Excellent':'blue','Good':'c','Medium':'purple','Bad':'violet','Very Bad':'red'}
@@ -297,25 +359,32 @@ def get_vis(tab4, df):
 	labs=[]
 	for clsa in df_final["WQC"]:
 		labs.append(classes.index(clsa))
-	
+	latitudes = df['lat'].to_numpy()
+	longitudes = df['long'].to_numpy()
+	wqis = df['WQI'].to_numpy()
+	wqc = df['WQC'].to_numpy()
 	# for longi,lat in zip(df_final["long"], df_final["lat"]):
 	# 	plt.scatter(longi, lat) 
 	
-	# plt.show()
-	scatter = ax.scatter(df_final["long"], df_final["lat"],c=labs,s=10)
-	print(*scatter.legend_elements()[0])
-	legend1 = ax.legend(*scatter.legend_elements(),
-                loc="lower left", title="Classes")
-	ax.add_artist(legend1)
+	for i in range(int(len(wqis)/4)):
+		# print(i)
+		plt.scatter(longitudes[i],latitudes[i], color=colors[wqc[i]],s=100, alpha=0.75)
+	plt.legend(title="WQI", loc="lower right")
+	plt.show()
+	# scatter = ax.scatter(df_final["long"], df_final["lat"],c=labs,s=10)
+	# print(*scatter.legend_elements()[0])
+	# legend1 = ax.legend(*scatter.legend_elements(),
+    #             loc="lower left", title="Classes")
+	# ax.add_artist(legend1)
 
 
-	canvas = FigureCanvasTkAgg(fig, master=tab4)
-	canvas.draw()
-	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+	# canvas = FigureCanvasTkAgg(fig, master=tab4)
+	# canvas.draw()
+	# canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
 
-	toolbar = NavigationToolbar2Tk(canvas, tab4)
-	toolbar.update()
-	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+	# toolbar = NavigationToolbar2Tk(canvas, tab4)
+	# toolbar.update()
+	# canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
 
 def get_vis_q2(tab5, df):
 	# tabControl.select(tab5)

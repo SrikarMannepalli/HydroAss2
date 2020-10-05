@@ -7,6 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.experimental import enable_hist_gradient_boosting
 from sklearn.ensemble import HistGradientBoostingRegressor
+from sklearn.ensemble import RandomForestClassifier
 pd.options.mode.chained_assignment = None  # default='warn'
 
 def q1(attr):
