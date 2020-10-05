@@ -1,4 +1,4 @@
-def normalizeQValue(ph=7, temperature=30,turbidity=0, phosphate=0, nitrates=0, eColi=0):
+def normalizeQValue(ph=7, temperature=30,turbidity=0, tds=0, nitrates=0, eColi=0):
 
     normalized_QValue_EColi = 0
     if eColi >= 0 and eColi < 1:
@@ -108,47 +108,23 @@ def normalizeQValue(ph=7, temperature=30,turbidity=0, phosphate=0, nitrates=0, e
     elif temperature >= 27.5 and temperature < 30:
         normalized_QValue_temp = 10
 
-    normalized_QValue_phosphate = 0
-    if phosphate < 0:
-        normalized_QValue_phosphate = 99
-    elif phosphate >= 0 and phosphate < 0.05:
-        normalized_QValue_phosphate = 98
-    elif phosphate >= 0.05 and phosphate < 0.1:
-        normalized_QValue_phosphate = 97
-    elif phosphate >= 0.1 and phosphate < 0.2:
-        normalized_QValue_phosphate = 95
-    elif phosphate >= 0.2 and phosphate < 0.3:
-        normalized_QValue_phosphate = 90
-    elif phosphate >= 0.3 and phosphate < 0.4:
-        normalized_QValue_phosphate = 78
-    elif phosphate >= 0.4 and phosphate < 0.5:
-        normalized_QValue_phosphate = 60
-    elif phosphate >= 0.5 and phosphate < 0.75:
-        normalized_QValue_phosphate = 50
-    elif phosphate >= 0.75 and phosphate < 1:
-        normalized_QValue_phosphate = 39
-    elif phosphate >= 1 and phosphate < 1.5:
-        normalized_QValue_phosphate = 30
-    elif phosphate >= 1.5 and phosphate < 2:
-        normalized_QValue_phosphate = 26
-    elif phosphate >= 2 and phosphate < 3:
-        normalized_QValue_phosphate = 21
-    elif phosphate >= 3 and phosphate < 4:
-        normalized_QValue_phosphate = 16
-    elif phosphate >= 4 and phosphate < 5:
-        normalized_QValue_phosphate = 12
-    elif phosphate >= 5 and phosphate < 6:
-        normalized_QValue_phosphate = 10
-    elif phosphate >= 6 and phosphate < 7:
-        normalized_QValue_phosphate = 8
-    elif phosphate >= 7 and phosphate < 8:
-        normalized_QValue_phosphate = 7
-    elif phosphate >= 8 and phosphate < 9:
-        normalized_QValue_phosphate = 6
-    elif phosphate >= 9 and phosphate < 10:
-        normalized_QValue_phosphate = 5
-    elif phosphate >= 10:
-        normalized_QValue_phosphate = 2
+    normalized_QValue_tds = 0
+    if tds < 0:
+        normalized_QValue_tds = 99
+    elif tds >= 0 and tds < 50:
+        normalized_QValue_tds = 85
+    elif tds >= 50 and tds < 100:
+        normalized_QValue_tds = 82
+    elif tds >= 100 and tds < 150:
+        normalized_QValue_tds = 80
+    elif tds >= 150 and tds < 450:
+        normalized_QValue_tds = 100 - (tds*40)/300
+    elif tds >= 450 and tds <= 600:
+        normalized_QValue_tds = 130 - (tds*30)/150
+    else:
+        normalized_QValue_tds = 10
+ 
+    
 
     normalized_QValue_nitrates = 0
     if nitrates < 0:
@@ -232,7 +208,7 @@ def normalizeQValue(ph=7, temperature=30,turbidity=0, phosphate=0, nitrates=0, e
         normalized_QValue_ph,
         normalized_QValue_temp,
         normalized_QValue_turbidity,
-        normalized_QValue_phosphate,
+        normalized_QValue_tds,
         normalized_QValue_nitrates,
         normalized_QValue_EColi
     ]
