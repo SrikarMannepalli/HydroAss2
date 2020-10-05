@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1bd1b37aff6843c1a90340719e11bd03 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_1bd1b37aff6843c1a90340719e11bd03" ></div>
+        
+</body>
+<script>    
+    
+            var map_1bd1b37aff6843c1a90340719e11bd03 = L.map(
+                "map_1bd1b37aff6843c1a90340719e11bd03",
+                {
+                    center: [20.5937, 78.9629],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 4,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_541855c5eee84b7d8290caf53faceab2 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_1bd1b37aff6843c1a90340719e11bd03);
+        
+    
+            var marker_cluster_f9a070841c854e728886bb3d8dea8bf5 = L.markerClusterGroup(
+                {}
+            );
+            map_1bd1b37aff6843c1a90340719e11bd03.addLayer(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+            var marker_2db18d6feed64f8e972239cee743b8df = L.marker(
+                [20.766666666666687, 72.9666666666667],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_d3b29e5df9a74ccdbbdc39d3b435ad55 = L.popup({"maxWidth": 1000});
+
+        
+            var html_d187f56b525943ffb98a2b32723b5f27 = $(`<div id="html_d187f56b525943ffb98a2b32723b5f27" style="width: 100.0%; height: 100.0%;">Station Name: Ambika River - at Bilimora <br>WQI: 72.39</div>`)[0];
+            popup_d3b29e5df9a74ccdbbdc39d3b435ad55.setContent(html_d187f56b525943ffb98a2b32723b5f27);
+        
+
+        marker_2db18d6feed64f8e972239cee743b8df.bindPopup(popup_d3b29e5df9a74ccdbbdc39d3b435ad55)
+        ;
+
+        
+    
+    
+            var marker_4dbed50613344e7ca4d1032d2cdc0210 = L.marker(
+                [21.633333333333315, 72.83333333333327],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_f8b8d939e7fa46a8b03c54aa61c09154 = L.popup({"maxWidth": 1000});
+
+        
+            var html_a2735a399ed040fca5f48a670b5db916 = $(`<div id="html_a2735a399ed040fca5f48a670b5db916" style="width: 100.0%; height: 100.0%;">Station Name: Amlakhadi River - near Anklesh <br>WQI: 72.02</div>`)[0];
+            popup_f8b8d939e7fa46a8b03c54aa61c09154.setContent(html_a2735a399ed040fca5f48a670b5db916);
+        
+
+        marker_4dbed50613344e7ca4d1032d2cdc0210.bindPopup(popup_f8b8d939e7fa46a8b03c54aa61c09154)
+        ;
+
+        
+    
+    
+            var marker_2d49451eade9419b807dca21d3d565b9 = L.marker(
+                [17.410833333333354, 75.85027777777829],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_6d79d631425e40a0b1aa73346ffab911 = L.popup({"maxWidth": 1000});
+
+        
+            var html_11d0f79b1b0048ce92b1d9f3d5f444bd = $(`<div id="html_11d0f79b1b0048ce92b1d9f3d5f444bd" style="width: 100.0%; height: 100.0%;">Station Name: Bhima River - near Takali <br>WQI: 73.99</div>`)[0];
+            popup_6d79d631425e40a0b1aa73346ffab911.setContent(html_11d0f79b1b0048ce92b1d9f3d5f444bd);
+        
+
+        marker_2d49451eade9419b807dca21d3d565b9.bindPopup(popup_6d79d631425e40a0b1aa73346ffab911)
+        ;
+
+        
+    
+    
+            var marker_5bfe552c040a412b81f65e2c5deb2a0d = L.marker(
+                [11.816666666666649, 77.79999999999968],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_5796e5cd36e24b28820f2a5ddf627d24 = L.popup({"maxWidth": 1000});
+
+        
+            var html_10ec0ecb8a5748a59169b30b6bc46307 = $(`<div id="html_10ec0ecb8a5748a59169b30b6bc46307" style="width: 100.0%; height: 100.0%;">Station Name: Cauvery River - Mettur <br>WQI: 73.57</div>`)[0];
+            popup_5796e5cd36e24b28820f2a5ddf627d24.setContent(html_10ec0ecb8a5748a59169b30b6bc46307);
+        
+
+        marker_5bfe552c040a412b81f65e2c5deb2a0d.bindPopup(popup_5796e5cd36e24b28820f2a5ddf627d24)
+        ;
+
+        
+    
+    
+            var marker_8c8a4cac3c9d46ec884997b9007f2ee5 = L.marker(
+                [11.433333333333351, 77.76666666666651],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_55d5530fc7214fb2928467c6d0a46260 = L.popup({"maxWidth": 1000});
+
+        
+            var html_db95d57d07b44606b61afa20477cd4df = $(`<div id="html_db95d57d07b44606b61afa20477cd4df" style="width: 100.0%; height: 100.0%;">Station Name: Cauvery River - at Pallippalayam <br>WQI: 72.26</div>`)[0];
+            popup_55d5530fc7214fb2928467c6d0a46260.setContent(html_db95d57d07b44606b61afa20477cd4df);
+        
+
+        marker_8c8a4cac3c9d46ec884997b9007f2ee5.bindPopup(popup_55d5530fc7214fb2928467c6d0a46260)
+        ;
+
+        
+    
+    
+            var marker_d8ad59a6803a4881b3a05a9e04b4c466 = L.marker(
+                [12.416666666666627, 76.58333333333304],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_c485a2f398b047e4b8d2fd2027843fa9 = L.popup({"maxWidth": 1000});
+
+        
+            var html_a9f3db8e8b3b43a78ad26a0ce563db3a = $(`<div id="html_a9f3db8e8b3b43a78ad26a0ce563db3a" style="width: 100.0%; height: 100.0%;">Station Name: Cauvery River - downstream K.R.S. Reservoir <br>WQI: 72.66</div>`)[0];
+            popup_c485a2f398b047e4b8d2fd2027843fa9.setContent(html_a9f3db8e8b3b43a78ad26a0ce563db3a);
+        
+
+        marker_d8ad59a6803a4881b3a05a9e04b4c466.bindPopup(popup_c485a2f398b047e4b8d2fd2027843fa9)
+        ;
+
+        
+    
+    
+            var marker_50acdb9412b442f0b8397e031daa6cd8 = L.marker(
+                [10.942777777777794, 78.44138888888858],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_5dd395e40284494098496430e1dbebac = L.popup({"maxWidth": 1000});
+
+        
+            var html_38657c4c54de499aaae68eb480751cb4 = $(`<div id="html_38657c4c54de499aaae68eb480751cb4" style="width: 100.0%; height: 100.0%;">Station Name: Cauvery River - near Musiri <br>WQI: 75.13</div>`)[0];
+            popup_5dd395e40284494098496430e1dbebac.setContent(html_38657c4c54de499aaae68eb480751cb4);
+        
+
+        marker_50acdb9412b442f0b8397e031daa6cd8.bindPopup(popup_5dd395e40284494098496430e1dbebac)
+        ;
+
+        
+    
+    
+            var marker_f229deee334f4e2ba33ff1f0fd69e6d1 = L.marker(
+                [12.25, 77.15000000000036],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_7fc8db61685b40aca9252985a9889080 = L.popup({"maxWidth": 1000});
+
+        
+            var html_9c966b9c5a0946f1a22a49d5a29cf156 = $(`<div id="html_9c966b9c5a0946f1a22a49d5a29cf156" style="width: 100.0%; height: 100.0%;">Station Name: Cauvery River - near Sathyagalam <br>WQI: 72.68</div>`)[0];
+            popup_7fc8db61685b40aca9252985a9889080.setContent(html_9c966b9c5a0946f1a22a49d5a29cf156);
+        
+
+        marker_f229deee334f4e2ba33ff1f0fd69e6d1.bindPopup(popup_7fc8db61685b40aca9252985a9889080)
+        ;
+
+        
+    
+    
+            var marker_340060154e53457ba3dcf7c0bfc432ef = L.marker(
+                [11.216666666666699, 75.9166666666669],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_dcda9b127562413c9d30525f7d514305 = L.popup({"maxWidth": 1000});
+
+        
+            var html_b244b282ff194b3f961bd083c15cea28 = $(`<div id="html_b244b282ff194b3f961bd083c15cea28" style="width: 100.0%; height: 100.0%;">Station Name: Chaliyar River - at Chungapally <br>WQI: 72.13</div>`)[0];
+            popup_dcda9b127562413c9d30525f7d514305.setContent(html_b244b282ff194b3f961bd083c15cea28);
+        
+
+        marker_340060154e53457ba3dcf7c0bfc432ef.bindPopup(popup_dcda9b127562413c9d30525f7d514305)
+        ;
+
+        
+    
+    
+            var marker_33b618a631c644fc92a79add262e08c7 = L.marker(
+                [11.241666666666756, 75.95000000000043],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_faad7bf54329413dbf91e441ffa26db6 = L.popup({"maxWidth": 1000});
+
+        
+            var html_60e57412564f458fb1e79c41cfa90b97 = $(`<div id="html_60e57412564f458fb1e79c41cfa90b97" style="width: 100.0%; height: 100.0%;">Station Name: Chaliyar River - at Koolimadu <br>WQI: 72.16</div>`)[0];
+            popup_faad7bf54329413dbf91e441ffa26db6.setContent(html_60e57412564f458fb1e79c41cfa90b97);
+        
+
+        marker_33b618a631c644fc92a79add262e08c7.bindPopup(popup_faad7bf54329413dbf91e441ffa26db6)
+        ;
+
+        
+    
+    
+            var marker_358d172a45d340f5987b1c80282a41ac = L.marker(
+                [20.349999999999977, 72.93333333333337],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_40e73c0b9ad545f1afbb847cb65525d2 = L.popup({"maxWidth": 1000});
+
+        
+            var html_0e5db8b464bd48c189cc32e5f4f6e0db = $(`<div id="html_0e5db8b464bd48c189cc32e5f4f6e0db" style="width: 100.0%; height: 100.0%;">Station Name: Damanganga River - at Kachigaon <br>WQI: 71.27</div>`)[0];
+            popup_40e73c0b9ad545f1afbb847cb65525d2.setContent(html_0e5db8b464bd48c189cc32e5f4f6e0db);
+        
+
+        marker_358d172a45d340f5987b1c80282a41ac.bindPopup(popup_40e73c0b9ad545f1afbb847cb65525d2)
+        ;
+
+        
+    
+    
+            var marker_6e698d283b1d424e8516bf5516b09cf1 = L.marker(
+                [16.966666666666697, 81.75],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_e345d45a8ea643c59213b53706aaa3b2 = L.popup({"maxWidth": 1000});
+
+        
+            var html_4c564914b040480585793061acccefb9 = $(`<div id="html_4c564914b040480585793061acccefb9" style="width: 100.0%; height: 100.0%;">Station Name: Godavari River - at Rajahmundry Downstream <br>WQI: 70.12</div>`)[0];
+            popup_e345d45a8ea643c59213b53706aaa3b2.setContent(html_4c564914b040480585793061acccefb9);
+        
+
+        marker_6e698d283b1d424e8516bf5516b09cf1.bindPopup(popup_e345d45a8ea643c59213b53706aaa3b2)
+        ;
+
+        
+    
+    
+            var marker_4a1aef0b2d6347198e6ec7aeb2c551ea = L.marker(
+                [17.0, 81.75],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_83c570ad23a54b2492d6f34000e9b852 = L.popup({"maxWidth": 1000});
+
+        
+            var html_95dc09b22e0045b3974f2e1b85d5cc10 = $(`<div id="html_95dc09b22e0045b3974f2e1b85d5cc10" style="width: 100.0%; height: 100.0%;">Station Name: Godavari River - at Rajahmundry Upstream <br>WQI: 70.82</div>`)[0];
+            popup_83c570ad23a54b2492d6f34000e9b852.setContent(html_95dc09b22e0045b3974f2e1b85d5cc10);
+        
+
+        marker_4a1aef0b2d6347198e6ec7aeb2c551ea.bindPopup(popup_83c570ad23a54b2492d6f34000e9b852)
+        ;
+
+        
+    
+    
+            var marker_617c49ad7b8b4903b315f5ebd12ad3e5 = L.marker(
+                [19.122500000000095, 76.36694444444467],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_b3df4a805ab74b96a49133407d346990 = L.popup({"maxWidth": 1000});
+
+        
+            var html_ee06a01eaee4434e8432e4d2729e0bba = $(`<div id="html_ee06a01eaee4434e8432e4d2729e0bba" style="width: 100.0%; height: 100.0%;">Station Name: Godavari River - near Dhalegaon <br>WQI: 74.51</div>`)[0];
+            popup_b3df4a805ab74b96a49133407d346990.setContent(html_ee06a01eaee4434e8432e4d2729e0bba);
+        
+
+        marker_617c49ad7b8b4903b315f5ebd12ad3e5.bindPopup(popup_b3df4a805ab74b96a49133407d346990)
+        ;
+
+        
+    
+    
+            var marker_5410e0df9ff748439f4feba059798b60 = L.marker(
+                [18.833333333333275, 79.45000000000043],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_b0311fe83d054affa7103906fcc4af7c = L.popup({"maxWidth": 1000});
+
+        
+            var html_2e25920466cd49869e03359963aeb303 = $(`<div id="html_2e25920466cd49869e03359963aeb303" style="width: 100.0%; height: 100.0%;">Station Name: Godavari River - near Mancherial <br>WQI: 74.55</div>`)[0];
+            popup_b0311fe83d054affa7103906fcc4af7c.setContent(html_2e25920466cd49869e03359963aeb303);
+        
+
+        marker_5410e0df9ff748439f4feba059798b60.bindPopup(popup_b0311fe83d054affa7103906fcc4af7c)
+        ;
+
+        
+    
+    
+            var marker_332d220015f1434a88e278514ceeed1f = L.marker(
+                [17.25, 81.66666666666694],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_604c88b4c07a4bdb8d30d48b2798fdaa = L.popup({"maxWidth": 1000});
+
+        
+            var html_caae6d6afe774e4696fc03d953830512 = $(`<div id="html_caae6d6afe774e4696fc03d953830512" style="width: 100.0%; height: 100.0%;">Station Name: Godavari River - near Polavaram <br>WQI: 74.08</div>`)[0];
+            popup_604c88b4c07a4bdb8d30d48b2798fdaa.setContent(html_caae6d6afe774e4696fc03d953830512);
+        
+
+        marker_332d220015f1434a88e278514ceeed1f.bindPopup(popup_604c88b4c07a4bdb8d30d48b2798fdaa)
+        ;
+
+        
+    
+    
+            var marker_c5072910d9d74a8fadc3e85ab513f4bf = L.marker(
+                [12.166666666666712, 76.78333333333299],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_f44638d7eb5b435cb320f0e7fb760b78 = L.popup({"maxWidth": 1000});
+
+        
+            var html_3400c631e0bc4ab38ba575da906e7cdd = $(`<div id="html_3400c631e0bc4ab38ba575da906e7cdd" style="width: 100.0%; height: 100.0%;">Station Name: Kabbini River - at Causeway, Sattar <br>WQI: 75.02</div>`)[0];
+            popup_f44638d7eb5b435cb320f0e7fb760b78.setContent(html_3400c631e0bc4ab38ba575da906e7cdd);
+        
+
+        marker_c5072910d9d74a8fadc3e85ab513f4bf.bindPopup(popup_f44638d7eb5b435cb320f0e7fb760b78)
+        ;
+
+        
+    
+    
+            var marker_8f5582a50fd445b0a1ca8bdb4e8b9a7f = L.marker(
+                [9.033333333333307, 76.91666666666673],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_2b3578854f6245e9af7e23b90505951a = L.popup({"maxWidth": 1000});
+
+        
+            var html_f50437ec796a4c5587ae81c76ce09607 = $(`<div id="html_f50437ec796a4c5587ae81c76ce09607" style="width: 100.0%; height: 100.0%;">Station Name: Kallada River - at Perumthottamkadavu <br>WQI: 71.98</div>`)[0];
+            popup_2b3578854f6245e9af7e23b90505951a.setContent(html_f50437ec796a4c5587ae81c76ce09607);
+        
+
+        marker_8f5582a50fd445b0a1ca8bdb4e8b9a7f.bindPopup(popup_2b3578854f6245e9af7e23b90505951a)
+        ;
+
+        
+    
+    
+            var marker_d8918f9ceab04d64865402cd79dea792 = L.marker(
+                [20.5, 85.84999999999997],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_51966cf8f594405081c6a02df19d317e = L.popup({"maxWidth": 1000});
+
+        
+            var html_8fdd3a75a01a4f1f998eaf207fc1ef2a = $(`<div id="html_8fdd3a75a01a4f1f998eaf207fc1ef2a" style="width: 100.0%; height: 100.0%;">Station Name: Kathajodi River - at Cuttack (Stn 1301) <br>WQI: 71.62</div>`)[0];
+            popup_51966cf8f594405081c6a02df19d317e.setContent(html_8fdd3a75a01a4f1f998eaf207fc1ef2a);
+        
+
+        marker_d8918f9ceab04d64865402cd79dea792.bindPopup(popup_51966cf8f594405081c6a02df19d317e)
+        ;
+
+        
+    
+    
+            var marker_04fabc1ae1bb46838a6163ebbee56787 = L.marker(
+                [20.416666666666707, 72.93333333333335],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_6789594d486c447fad1e7ad9b89efc8b = L.popup({"maxWidth": 1000});
+
+        
+            var html_4e95c0e39d3b44e2923ae1e174890fa0 = $(`<div id="html_4e95c0e39d3b44e2923ae1e174890fa0" style="width: 100.0%; height: 100.0%;">Station Name: Kolak River - at Patalia Bridge <br>WQI: 72.77</div>`)[0];
+            popup_6789594d486c447fad1e7ad9b89efc8b.setContent(html_4e95c0e39d3b44e2923ae1e174890fa0);
+        
+
+        marker_04fabc1ae1bb46838a6163ebbee56787.bindPopup(popup_6789594d486c447fad1e7ad9b89efc8b)
+        ;
+
+        
+    
+    
+            var marker_5bab58840c2d47bc80d0c51caa8d7eb4 = L.marker(
+                [16.25, 77.86666666666659],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_5d881b975aa246ca8ee61a1effc2255b = L.popup({"maxWidth": 1000});
+
+        
+            var html_c1d8e7319ad74c88b86d498fa22d2759 = $(`<div id="html_c1d8e7319ad74c88b86d498fa22d2759" style="width: 100.0%; height: 100.0%;">Station Name: Krishna River - at Gadwal <br>WQI: 75.25</div>`)[0];
+            popup_5d881b975aa246ca8ee61a1effc2255b.setContent(html_c1d8e7319ad74c88b86d498fa22d2759);
+        
+
+        marker_5bab58840c2d47bc80d0c51caa8d7eb4.bindPopup(popup_5d881b975aa246ca8ee61a1effc2255b)
+        ;
+
+        
+    
+    
+            var marker_0e1b3791a17740bc8747cc8eb82122fc = L.marker(
+                [16.66666666666662, 74.61666666666657],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_fc0f5312825340eda5aa2860726dda7e = L.popup({"maxWidth": 1000});
+
+        
+            var html_cd192ee4865640c4873f5451d93a29f0 = $(`<div id="html_cd192ee4865640c4873f5451d93a29f0" style="width: 100.0%; height: 100.0%;">Station Name: Krishna River - at Sangli <br>WQI: 74.23</div>`)[0];
+            popup_fc0f5312825340eda5aa2860726dda7e.setContent(html_cd192ee4865640c4873f5451d93a29f0);
+        
+
+        marker_0e1b3791a17740bc8747cc8eb82122fc.bindPopup(popup_fc0f5312825340eda5aa2860726dda7e)
+        ;
+
+        
+    
+    
+            var marker_cce0c24b126e41e1889648ee30a7296c = L.marker(
+                [16.4166666666667, 79.5333333333333],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_2a0e9f14ecbc49c1810c868b4a603a6f = L.popup({"maxWidth": 1000});
+
+        
+            var html_baab316c992341658697b9ec851f0577 = $(`<div id="html_baab316c992341658697b9ec851f0577" style="width: 100.0%; height: 100.0%;">Station Name: Krishna River - at Vedenapally <br>WQI: 75.73</div>`)[0];
+            popup_2a0e9f14ecbc49c1810c868b4a603a6f.setContent(html_baab316c992341658697b9ec851f0577);
+        
+
+        marker_cce0c24b126e41e1889648ee30a7296c.bindPopup(popup_2a0e9f14ecbc49c1810c868b4a603a6f)
+        ;
+
+        
+    
+    
+            var marker_4332e4870489471d97404009fa23eedf = L.marker(
+                [17.300000000000086, 74.18333333333315],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_a82075fc5be84ed3a3dbb5437bc6ae36 = L.popup({"maxWidth": 1000});
+
+        
+            var html_a167b238beb34f1498fc93c54d3223e7 = $(`<div id="html_a167b238beb34f1498fc93c54d3223e7" style="width: 100.0%; height: 100.0%;">Station Name: Krishna River - near Karad <br>WQI: 74.11</div>`)[0];
+            popup_a82075fc5be84ed3a3dbb5437bc6ae36.setContent(html_a167b238beb34f1498fc93c54d3223e7);
+        
+
+        marker_4332e4870489471d97404009fa23eedf.bindPopup(popup_a82075fc5be84ed3a3dbb5437bc6ae36)
+        ;
+
+        
+    
+    
+            var marker_90977925d5ee4c1396a7170623408b06 = L.marker(
+                [16.516666666666723, 80.61666666666623],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_56f63a2e48c848738100689bc09fb820 = L.popup({"maxWidth": 1000});
+
+        
+            var html_72f3245eda5e4d31ad9b6bb543b22de8 = $(`<div id="html_72f3245eda5e4d31ad9b6bb543b22de8" style="width: 100.0%; height: 100.0%;">Station Name: Krishna River - near Vijayawada <br>WQI: 73.89</div>`)[0];
+            popup_56f63a2e48c848738100689bc09fb820.setContent(html_72f3245eda5e4d31ad9b6bb543b22de8);
+        
+
+        marker_90977925d5ee4c1396a7170623408b06.bindPopup(popup_56f63a2e48c848738100689bc09fb820)
+        ;
+
+        
+    
+    
+            var marker_cb32b9a435ad4b44a0834325fe21fce5 = L.marker(
+                [20.166666666666725, 85.83333333333323],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_7eb2d38adc3f48028a30ace5759f8cf4 = L.popup({"maxWidth": 1000});
+
+        
+            var html_4b53bb2b072c4a1ca43214dd04dbb558 = $(`<div id="html_4b53bb2b072c4a1ca43214dd04dbb558" style="width: 100.0%; height: 100.0%;">Station Name: Kuakhai River - Downstream Bhubaneswar <br>WQI: 73.93</div>`)[0];
+            popup_7eb2d38adc3f48028a30ace5759f8cf4.setContent(html_4b53bb2b072c4a1ca43214dd04dbb558);
+        
+
+        marker_cb32b9a435ad4b44a0834325fe21fce5.bindPopup(popup_7eb2d38adc3f48028a30ace5759f8cf4)
+        ;
+
+        
+    
+    
+            var marker_958bee0df2cb49258aa83c22b7bcdc75 = L.marker(
+                [20.200000000000028, 85.83333333333323],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_0d0dfa3e09254fc9b526d6105517137f = L.popup({"maxWidth": 1000});
+
+        
+            var html_0107675778af4c4bab7aa87b2d8d46bd = $(`<div id="html_0107675778af4c4bab7aa87b2d8d46bd" style="width: 100.0%; height: 100.0%;">Station Name: Kuakhai River - Upstream Bhubaneswar <br>WQI: 73.98</div>`)[0];
+            popup_0d0dfa3e09254fc9b526d6105517137f.setContent(html_0107675778af4c4bab7aa87b2d8d46bd);
+        
+
+        marker_958bee0df2cb49258aa83c22b7bcdc75.bindPopup(popup_0d0dfa3e09254fc9b526d6105517137f)
+        ;
+
+        
+    
+    
+            var marker_257f1592505c47abb3c7999cfa0dca3a = L.marker(
+                [18.4333333333333, 73.13333333333331],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_2334adc131fe453783b4b545116b5f61 = L.popup({"maxWidth": 1000});
+
+        
+            var html_4fd7dd4e7c8f4152bbf9cc213abce348 = $(`<div id="html_4fd7dd4e7c8f4152bbf9cc213abce348" style="width: 100.0%; height: 100.0%;">Station Name: Kundalika River - at Roha City <br>WQI: 75.73</div>`)[0];
+            popup_2334adc131fe453783b4b545116b5f61.setContent(html_4fd7dd4e7c8f4152bbf9cc213abce348);
+        
+
+        marker_257f1592505c47abb3c7999cfa0dca3a.bindPopup(popup_2334adc131fe453783b4b545116b5f61)
+        ;
+
+        
+    
+    
+            var marker_e3c70736fe564b888ed03bc5c7a6cc13 = L.marker(
+                [20.466666666666697, 85.83333333333327],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_62eb16dd41794b0584764754529234ff = L.popup({"maxWidth": 1000});
+
+        
+            var html_e75b00a7c8bb43bbaa69367e7a79e0d5 = $(`<div id="html_e75b00a7c8bb43bbaa69367e7a79e0d5" style="width: 100.0%; height: 100.0%;">Station Name: Mahandi River  - at Cuttack (Stn 1277) <br>WQI: 74.17</div>`)[0];
+            popup_62eb16dd41794b0584764754529234ff.setContent(html_e75b00a7c8bb43bbaa69367e7a79e0d5);
+        
+
+        marker_e3c70736fe564b888ed03bc5c7a6cc13.bindPopup(popup_62eb16dd41794b0584764754529234ff)
+        ;
+
+        
+    
+    
+            var marker_a5a6caacd0e74f7480a0b25c6412de41 = L.marker(
+                [20.466666666666697, 85.83333333333324],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_a160f04d1f4c44209dac2cb38e5c9522 = L.popup({"maxWidth": 1000});
+
+        
+            var html_568050aa40f74a8e8063ca80d0796d74 = $(`<div id="html_568050aa40f74a8e8063ca80d0796d74" style="width: 100.0%; height: 100.0%;">Station Name: Mahandi River - at Cuttack (Stn 1278) <br>WQI: 73.75</div>`)[0];
+            popup_a160f04d1f4c44209dac2cb38e5c9522.setContent(html_568050aa40f74a8e8063ca80d0796d74);
+        
+
+        marker_a5a6caacd0e74f7480a0b25c6412de41.bindPopup(popup_a160f04d1f4c44209dac2cb38e5c9522)
+        ;
+
+        
+    
+    
+            var marker_d3acff15690140a7a4ad77796fde6c9a = L.marker(
+                [23.25, 73.0],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_2ee053431dd0429a8f67289138e7a57a = L.popup({"maxWidth": 1000});
+
+        
+            var html_9bb7c7fa559748da87e6f1067cce00f1 = $(`<div id="html_9bb7c7fa559748da87e6f1067cce00f1" style="width: 100.0%; height: 100.0%;">Station Name: Mahi River  - at Vasad Baroda <br>WQI: 73.85</div>`)[0];
+            popup_2ee053431dd0429a8f67289138e7a57a.setContent(html_9bb7c7fa559748da87e6f1067cce00f1);
+        
+
+        marker_d3acff15690140a7a4ad77796fde6c9a.bindPopup(popup_2ee053431dd0429a8f67289138e7a57a)
+        ;
+
+        
+    
+    
+            var marker_847aeffa3b1f41b9b5a05fff49fd4a91 = L.marker(
+                [22.833333333333265, 74.33333333333331],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_f749f6429d5a4ab28db4b8d584bfebca = L.popup({"maxWidth": 1000});
+
+        
+            var html_66af921cec764f4086ff5617b4c437f2 = $(`<div id="html_66af921cec764f4086ff5617b4c437f2" style="width: 100.0%; height: 100.0%;">Station Name: Mahi River - near Sevalia <br>WQI: 73.97</div>`)[0];
+            popup_f749f6429d5a4ab28db4b8d584bfebca.setContent(html_66af921cec764f4086ff5617b4c437f2);
+        
+
+        marker_847aeffa3b1f41b9b5a05fff49fd4a91.bindPopup(popup_f749f6429d5a4ab28db4b8d584bfebca)
+        ;
+
+        
+    
+    
+            var marker_d8c5d2b2c546419f94164a9230d66bb7 = L.marker(
+                [15.633333333333317, 73.84999999999994],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_8f74897ff71a41919fbe6d8b91245b6d = L.popup({"maxWidth": 1000});
+
+        
+            var html_eaa07ecf2df647bba1d84f2418ba4496 = $(`<div id="html_eaa07ecf2df647bba1d84f2418ba4496" style="width: 100.0%; height: 100.0%;">Station Name: Mandovi River - at Panaji <br>WQI: 72.54</div>`)[0];
+            popup_8f74897ff71a41919fbe6d8b91245b6d.setContent(html_eaa07ecf2df647bba1d84f2418ba4496);
+        
+
+        marker_d8c5d2b2c546419f94164a9230d66bb7.bindPopup(popup_8f74897ff71a41919fbe6d8b91245b6d)
+        ;
+
+        
+    
+    
+            var marker_1fd6cf25b18e40a9a924271544a397c2 = L.marker(
+                [21.083330000000014, 72.88333000000007],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_c3db3b79b0ca4b489b78ad14c68eaca4 = L.popup({"maxWidth": 1000});
+
+        
+            var html_a5c686dbbe8843e8a3f53dc0dc810679 = $(`<div id="html_a5c686dbbe8843e8a3f53dc0dc810679" style="width: 100.0%; height: 100.0%;">Station Name: Mindhola River - at State Highway Bridge Sachin <br>WQI: 72.98</div>`)[0];
+            popup_c3db3b79b0ca4b489b78ad14c68eaca4.setContent(html_a5c686dbbe8843e8a3f53dc0dc810679);
+        
+
+        marker_1fd6cf25b18e40a9a924271544a397c2.bindPopup(popup_c3db3b79b0ca4b489b78ad14c68eaca4)
+        ;
+
+        
+    
+    
+            var marker_bcfdf4659c3547bfba6c36299ba0d653 = L.marker(
+                [9.800000000000004, 76.9],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_8b39ae018df940328d17f2a80563ce22 = L.popup({"maxWidth": 1000});
+
+        
+            var html_10fe8ba5f98846398821d2a57b83f539 = $(`<div id="html_10fe8ba5f98846398821d2a57b83f539" style="width: 100.0%; height: 100.0%;">Station Name: Muvattapuzha River - at Vettikkattumukku <br>WQI: 71.82</div>`)[0];
+            popup_8b39ae018df940328d17f2a80563ce22.setContent(html_10fe8ba5f98846398821d2a57b83f539);
+        
+
+        marker_bcfdf4659c3547bfba6c36299ba0d653.bindPopup(popup_8b39ae018df940328d17f2a80563ce22)
+        ;
+
+        
+    
+    
+            var marker_7d8063cbb9e845eebe5af14ddff3d870 = L.marker(
+                [21.666666666666725, 72.91666666666669],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_914dc42825d74f1fbe2fa36d09749265 = L.popup({"maxWidth": 1000});
+
+        
+            var html_a79a0f76872a4952afdc3b7deb96e920 = $(`<div id="html_a79a0f76872a4952afdc3b7deb96e920" style="width: 100.0%; height: 100.0%;">Station Name: Narmada River - at Bharuch, Zadeshvar <br>WQI: 70.85</div>`)[0];
+            popup_914dc42825d74f1fbe2fa36d09749265.setContent(html_a79a0f76872a4952afdc3b7deb96e920);
+        
+
+        marker_7d8063cbb9e845eebe5af14ddff3d870.bindPopup(popup_914dc42825d74f1fbe2fa36d09749265)
+        ;
+
+        
+    
+    
+            var marker_2b597d922ded4e1cbb4cb5a32aa38567 = L.marker(
+                [22.149999999999988, 75.14999999999979],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_abca2c29b6214f4081eb7b2fecd3441f = L.popup({"maxWidth": 1000});
+
+        
+            var html_6706e82852dc4ac6a15e06b08dc44d7a = $(`<div id="html_6706e82852dc4ac6a15e06b08dc44d7a" style="width: 100.0%; height: 100.0%;">Station Name: Narmada River - at Mandleshwar <br>WQI: 75.38</div>`)[0];
+            popup_abca2c29b6214f4081eb7b2fecd3441f.setContent(html_6706e82852dc4ac6a15e06b08dc44d7a);
+        
+
+        marker_2b597d922ded4e1cbb4cb5a32aa38567.bindPopup(popup_abca2c29b6214f4081eb7b2fecd3441f)
+        ;
+
+        
+    
+    
+            var marker_b60270f741834e489bb40452dfd6352d = L.marker(
+                [22.78333333333316, 77.78333333333295],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_9a07960cd44a4b838bc74364e5a00765 = L.popup({"maxWidth": 1000});
+
+        
+            var html_ce91bff577c0401b916e4d512acacf29 = $(`<div id="html_ce91bff577c0401b916e4d512acacf29" style="width: 100.0%; height: 100.0%;">Station Name: Narmada River - at Sethanighat <br>WQI: 75.65</div>`)[0];
+            popup_9a07960cd44a4b838bc74364e5a00765.setContent(html_ce91bff577c0401b916e4d512acacf29);
+        
+
+        marker_b60270f741834e489bb40452dfd6352d.bindPopup(popup_9a07960cd44a4b838bc74364e5a00765)
+        ;
+
+        
+    
+    
+            var marker_50efc1740c864a2988fc7ee95f689178 = L.marker(
+                [21.916666666666725, 73.65000000000002],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_7d31d144b7934df5a67187a30eb937cc = L.popup({"maxWidth": 1000});
+
+        
+            var html_fd7fa4f2d43d442db2f8bed3ddadd599 = $(`<div id="html_fd7fa4f2d43d442db2f8bed3ddadd599" style="width: 100.0%; height: 100.0%;">Station Name: Narmada River - near Garudeshwar <br>WQI: 74.06</div>`)[0];
+            popup_7d31d144b7934df5a67187a30eb937cc.setContent(html_fd7fa4f2d43d442db2f8bed3ddadd599);
+        
+
+        marker_50efc1740c864a2988fc7ee95f689178.bindPopup(popup_7d31d144b7934df5a67187a30eb937cc)
+        ;
+
+        
+    
+    
+            var marker_b1f45eaf8bb54c2c8cdb0d17f5e7a5e9 = L.marker(
+                [18.75, 73.0],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_8c7055968a7f463c9c056042627f1b9f = L.popup({"maxWidth": 1000});
+
+        
+            var html_2514852efe18433d8c0a6ff229244d49 = $(`<div id="html_2514852efe18433d8c0a6ff229244d49" style="width: 100.0%; height: 100.0%;">Station Name: Patalganga River - near intake MIDC <br>WQI: 71.32</div>`)[0];
+            popup_8c7055968a7f463c9c056042627f1b9f.setContent(html_2514852efe18433d8c0a6ff229244d49);
+        
+
+        marker_b1f45eaf8bb54c2c8cdb0d17f5e7a5e9.bindPopup(popup_8c7055968a7f463c9c056042627f1b9f)
+        ;
+
+        
+    
+    
+            var marker_7d5068bca17e438eb92b185ef7acd87a = L.marker(
+                [14.44999999999998, 79.98333333333348],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_31211acc33a7491a931bdbd90b683b63 = L.popup({"maxWidth": 1000});
+
+        
+            var html_50ce9384feb9443ea93e3ae754d242bd = $(`<div id="html_50ce9384feb9443ea93e3ae754d242bd" style="width: 100.0%; height: 100.0%;">Station Name: Pennar River - near Siddvata <br>WQI: 78.57</div>`)[0];
+            popup_31211acc33a7491a931bdbd90b683b63.setContent(html_50ce9384feb9443ea93e3ae754d242bd);
+        
+
+        marker_7d5068bca17e438eb92b185ef7acd87a.bindPopup(popup_31211acc33a7491a931bdbd90b683b63)
+        ;
+
+        
+    
+    
+            var marker_15ff81ab08cf43988b8993f4b414be4b = L.marker(
+                [10.125, 76.3333333333331],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_a79e9d715e164d418319121f5920f676 = L.popup({"maxWidth": 1000});
+
+        
+            var html_f016c4ca33b6402eb32dee8d364eac50 = $(`<div id="html_f016c4ca33b6402eb32dee8d364eac50" style="width: 100.0%; height: 100.0%;">Station Name: Periyar River - near Alwaye <br>WQI: 72.13</div>`)[0];
+            popup_a79e9d715e164d418319121f5920f676.setContent(html_f016c4ca33b6402eb32dee8d364eac50);
+        
+
+        marker_15ff81ab08cf43988b8993f4b414be4b.bindPopup(popup_a79e9d715e164d418319121f5920f676)
+        ;
+
+        
+    
+    
+            var marker_1cb4244b2329470f980c97a3846ed67a = L.marker(
+                [10.18333333333336, 76.53333333333293],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_03c99cccb4764c2da43b01e88995b347 = L.popup({"maxWidth": 1000});
+
+        
+            var html_63fe5ede71704f0682e2b37291ba2665 = $(`<div id="html_63fe5ede71704f0682e2b37291ba2665" style="width: 100.0%; height: 100.0%;">Station Name: Periyar River - near Kalady <br>WQI: 72.18</div>`)[0];
+            popup_03c99cccb4764c2da43b01e88995b347.setContent(html_63fe5ede71704f0682e2b37291ba2665);
+        
+
+        marker_1cb4244b2329470f980c97a3846ed67a.bindPopup(popup_03c99cccb4764c2da43b01e88995b347)
+        ;
+
+        
+    
+    
+            var marker_5f7f2ae85ea74ef894aaf00d91ee9c55 = L.marker(
+                [22.733333333333334, 72.46666666666687],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_12485bd4fe554875a4bef4912b10e61d = L.popup({"maxWidth": 1000});
+
+        
+            var html_aff1e50bae154665a14ee69660ba73de = $(`<div id="html_aff1e50bae154665a14ee69660ba73de" style="width: 100.0%; height: 100.0%;">Station Name: Sabarmati River - at Vautha <br>WQI: 71.75</div>`)[0];
+            popup_12485bd4fe554875a4bef4912b10e61d.setContent(html_aff1e50bae154665a14ee69660ba73de);
+        
+
+        marker_5f7f2ae85ea74ef894aaf00d91ee9c55.bindPopup(popup_12485bd4fe554875a4bef4912b10e61d)
+        ;
+
+        
+    
+    
+            var marker_661a7d36b3c44e1092e3f3db37b15b61 = L.marker(
+                [23.083333333333236, 72.63333333333368],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_3e5ac566650d471d9efca2ddcc716999 = L.popup({"maxWidth": 1000});
+
+        
+            var html_e874bb5245864c218f241f80e90fcc55 = $(`<div id="html_e874bb5245864c218f241f80e90fcc55" style="width: 100.0%; height: 100.0%;">Station Name: Sabarmati River - in Ahmedabad <br>WQI: 74.05</div>`)[0];
+            popup_3e5ac566650d471d9efca2ddcc716999.setContent(html_e874bb5245864c218f241f80e90fcc55);
+        
+
+        marker_661a7d36b3c44e1092e3f3db37b15b61.bindPopup(popup_3e5ac566650d471d9efca2ddcc716999)
+        ;
+
+        
+    
+    
+            var marker_a745ba3031d64eae8b8a96a27ea5f4d7 = L.marker(
+                [23.833333333333297, 73.83333333333354],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_a70d5db5eb5a4135be71ad9e8a14641d = L.popup({"maxWidth": 1000});
+
+        
+            var html_e12ac0b2d3524563bdc4b3b85d245675 = $(`<div id="html_e12ac0b2d3524563bdc4b3b85d245675" style="width: 100.0%; height: 100.0%;">Station Name: Sabarmati River - near Dharoi Dam <br>WQI: 74.51</div>`)[0];
+            popup_a70d5db5eb5a4135be71ad9e8a14641d.setContent(html_e12ac0b2d3524563bdc4b3b85d245675);
+        
+
+        marker_a745ba3031d64eae8b8a96a27ea5f4d7.bindPopup(popup_a70d5db5eb5a4135be71ad9e8a14641d)
+        ;
+
+        
+    
+    
+            var marker_b37b026f7766420bb863621ef51ea621 = L.marker(
+                [22.95305555555566, 86.01583333333305],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_29b0956c24bb45529fb84350524954e9 = L.popup({"maxWidth": 1000});
+
+        
+            var html_3fc138c482a74a6a9c6b63eb3075e1d2 = $(`<div id="html_3fc138c482a74a6a9c6b63eb3075e1d2" style="width: 100.0%; height: 100.0%;">Station Name: Subarnerekha River - at Chandil Bridge <br>WQI: 71.97</div>`)[0];
+            popup_29b0956c24bb45529fb84350524954e9.setContent(html_3fc138c482a74a6a9c6b63eb3075e1d2);
+        
+
+        marker_b37b026f7766420bb863621ef51ea621.bindPopup(popup_29b0956c24bb45529fb84350524954e9)
+        ;
+
+        
+    
+    
+            var marker_c784edb8cbf449c9afb9bee56a240a16 = L.marker(
+                [22.571111111111076, 86.48055555555544],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_8aeddc34bfc8416ca4cf5d84e4e1875d = L.popup({"maxWidth": 1000});
+
+        
+            var html_d0186eb834a54ada93b984a2811a7efe = $(`<div id="html_d0186eb834a54ada93b984a2811a7efe" style="width: 100.0%; height: 100.0%;">Station Name: Subarnerekha River - at Jamshedpur <br>WQI: 72.48</div>`)[0];
+            popup_8aeddc34bfc8416ca4cf5d84e4e1875d.setContent(html_d0186eb834a54ada93b984a2811a7efe);
+        
+
+        marker_c784edb8cbf449c9afb9bee56a240a16.bindPopup(popup_8aeddc34bfc8416ca4cf5d84e4e1875d)
+        ;
+
+        
+    
+    
+            var marker_3d40106ca92b4b7ca62498b654fb9ade = L.marker(
+                [22.818888888888953, 86.19583333333323],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_fdafe7fae9e2406fb50e1b3ba60ced88 = L.popup({"maxWidth": 1000});
+
+        
+            var html_8f90daa1444b4dcc90e5a443312b98c8 = $(`<div id="html_8f90daa1444b4dcc90e5a443312b98c8" style="width: 100.0%; height: 100.0%;">Station Name: Subarnerekha River - at Mango Bridge <br>WQI: 71.93</div>`)[0];
+            popup_fdafe7fae9e2406fb50e1b3ba60ced88.setContent(html_8f90daa1444b4dcc90e5a443312b98c8);
+        
+
+        marker_3d40106ca92b4b7ca62498b654fb9ade.bindPopup(popup_fdafe7fae9e2406fb50e1b3ba60ced88)
+        ;
+
+        
+    
+    
+            var marker_3dd714213fe442dbb1d2efa967f3015e = L.marker(
+                [23.12083333333337, 85.5],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_5745f021945345ea9574efbd43eabbdd = L.popup({"maxWidth": 1000});
+
+        
+            var html_791415e23f8747459590b0c7f2a259b6 = $(`<div id="html_791415e23f8747459590b0c7f2a259b6" style="width: 100.0%; height: 100.0%;">Station Name: Subarnerekha River - downstream Ranchi <br>WQI: 72.57</div>`)[0];
+            popup_5745f021945345ea9574efbd43eabbdd.setContent(html_791415e23f8747459590b0c7f2a259b6);
+        
+
+        marker_3dd714213fe442dbb1d2efa967f3015e.bindPopup(popup_5745f021945345ea9574efbd43eabbdd)
+        ;
+
+        
+    
+    
+            var marker_6851c8c573dd4408a85f8d483caae5d9 = L.marker(
+                [21.16666666666664, 73.66666666666646],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_bae7b37d3fa543d28ed29c057a28ab68 = L.popup({"maxWidth": 1000});
+
+        
+            var html_2cbef40026a041f2b2c1919b2b74f48f = $(`<div id="html_2cbef40026a041f2b2c1919b2b74f48f" style="width: 100.0%; height: 100.0%;">Station Name: Tapti River  - at Ukai, Sherula Bridge <br>WQI: 74.06</div>`)[0];
+            popup_bae7b37d3fa543d28ed29c057a28ab68.setContent(html_2cbef40026a041f2b2c1919b2b74f48f);
+        
+
+        marker_6851c8c573dd4408a85f8d483caae5d9.bindPopup(popup_bae7b37d3fa543d28ed29c057a28ab68)
+        ;
+
+        
+    
+    
+            var marker_60057d66d8ff4b778becc9a4ce9b1ed7 = L.marker(
+                [21.283611111111057, 72.9500000000003],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_a87a64d3620540ae905679b5ef1245d5 = L.popup({"maxWidth": 1000});
+
+        
+            var html_0f7a8272e47e4b8abae30df715d54038 = $(`<div id="html_0f7a8272e47e4b8abae30df715d54038" style="width: 100.0%; height: 100.0%;">Station Name: Tapti River - at Kathore <br>WQI: 73.69</div>`)[0];
+            popup_a87a64d3620540ae905679b5ef1245d5.setContent(html_0f7a8272e47e4b8abae30df715d54038);
+        
+
+        marker_60057d66d8ff4b778becc9a4ce9b1ed7.bindPopup(popup_a87a64d3620540ae905679b5ef1245d5)
+        ;
+
+        
+    
+    
+            var marker_ef8d0c092d4c4e34b81902f5234b7b1f = L.marker(
+                [21.333333333333275, 76.25],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_facef1693e57423d80cb8d411fd61f35 = L.popup({"maxWidth": 1000});
+
+        
+            var html_e4796637e49943c79a750b1b0757702d = $(`<div id="html_e4796637e49943c79a750b1b0757702d" style="width: 100.0%; height: 100.0%;">Station Name: Tapti River - near Burhanpur <br>WQI: 74.99</div>`)[0];
+            popup_facef1693e57423d80cb8d411fd61f35.setContent(html_e4796637e49943c79a750b1b0757702d);
+        
+
+        marker_ef8d0c092d4c4e34b81902f5234b7b1f.bindPopup(popup_facef1693e57423d80cb8d411fd61f35)
+        ;
+
+        
+    
+    
+            var marker_c7faec64503a403b9ef5ce8866f24c18 = L.marker(
+                [21.51666666666667, 76.76666666666651],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_fadae360f2814581b9800459a2d1258d = L.popup({"maxWidth": 1000});
+
+        
+            var html_692c81b8c3d4471a9053caabecc24d15 = $(`<div id="html_692c81b8c3d4471a9053caabecc24d15" style="width: 100.0%; height: 100.0%;">Station Name: Tapti River - near Nepanagar <br>WQI: 75.02</div>`)[0];
+            popup_fadae360f2814581b9800459a2d1258d.setContent(html_692c81b8c3d4471a9053caabecc24d15);
+        
+
+        marker_c7faec64503a403b9ef5ce8866f24c18.bindPopup(popup_fadae360f2814581b9800459a2d1258d)
+        ;
+
+        
+    
+    
+            var marker_f8802e0b257640619bf6b02d3ac17546 = L.marker(
+                [15.2666666666667, 76.34999999999962],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_e84505427d6046dbb3d23b0dc314160a = L.popup({"maxWidth": 1000});
+
+        
+            var html_5ce65ce643cb4e8092a035ed0e366dfe = $(`<div id="html_5ce65ce643cb4e8092a035ed0e366dfe" style="width: 100.0%; height: 100.0%;">Station Name: Tungabhadra River - at Ullanuru <br>WQI: 73.69</div>`)[0];
+            popup_e84505427d6046dbb3d23b0dc314160a.setContent(html_5ce65ce643cb4e8092a035ed0e366dfe);
+        
+
+        marker_f8802e0b257640619bf6b02d3ac17546.bindPopup(popup_e84505427d6046dbb3d23b0dc314160a)
+        ;
+
+        
+    
+    
+            var marker_59241b92583446309ce806fce02a9a95 = L.marker(
+                [14.216666666666699, 75.70000000000036],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_bb873280157147c8b23d1e15d0e08d6e = L.popup({"maxWidth": 1000});
+
+        
+            var html_41506eb7eeb84c6ab4e18fc8f29b6527 = $(`<div id="html_41506eb7eeb84c6ab4e18fc8f29b6527" style="width: 100.0%; height: 100.0%;">Station Name: Tunghabhadra River - at Honnali Bridge <br>WQI: 73.46</div>`)[0];
+            popup_bb873280157147c8b23d1e15d0e08d6e.setContent(html_41506eb7eeb84c6ab4e18fc8f29b6527);
+        
+
+        marker_59241b92583446309ce806fce02a9a95.bindPopup(popup_bb873280157147c8b23d1e15d0e08d6e)
+        ;
+
+        
+    
+    
+            var marker_42ab8895ad144008868cebc843e66b1b = L.marker(
+                [19.678888888888867, 79.78694444444416],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_f4f044dee818425f962a65a5eac25833 = L.popup({"maxWidth": 1000});
+
+        
+            var html_8b7b16bf2a574782af359cecc5d05ac5 = $(`<div id="html_8b7b16bf2a574782af359cecc5d05ac5" style="width: 100.0%; height: 100.0%;">Station Name: Wainganga River - near Ashti <br>WQI: 74.14</div>`)[0];
+            popup_f4f044dee818425f962a65a5eac25833.setContent(html_8b7b16bf2a574782af359cecc5d05ac5);
+        
+
+        marker_42ab8895ad144008868cebc843e66b1b.bindPopup(popup_f4f044dee818425f962a65a5eac25833)
+        ;
+
+        
+    
+    
+            var marker_1bf659e83e6a4596a4111f902bdd4e42 = L.marker(
+                [11.25, 75.9333333333331],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_c88def3690e345c8b88cb664c1921542 = L.popup({"maxWidth": 1000});
+
+        
+            var html_ee4252794ea14ed3b65a6e9a32ffeacb = $(`<div id="html_ee4252794ea14ed3b65a6e9a32ffeacb" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Chungapally <br>WQI: 73.43</div>`)[0];
+            popup_c88def3690e345c8b88cb664c1921542.setContent(html_ee4252794ea14ed3b65a6e9a32ffeacb);
+        
+
+        marker_1bf659e83e6a4596a4111f902bdd4e42.bindPopup(popup_c88def3690e345c8b88cb664c1921542)
+        ;
+
+        
+    
+    
+            var marker_7439383be5dc4634a9c7d824cb33e7ad = L.marker(
+                [9.75, 76.3333333333331],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_ec169cba970a45538cbe4471b7edf72d = L.popup({"maxWidth": 1000});
+
+        
+            var html_ac8c4740c63b4d86bbe886d947cd90d8 = $(`<div id="html_ac8c4740c63b4d86bbe886d947cd90d8" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Eloor near Alwaye <br>WQI: 72.62</div>`)[0];
+            popup_ec169cba970a45538cbe4471b7edf72d.setContent(html_ac8c4740c63b4d86bbe886d947cd90d8);
+        
+
+        marker_7439383be5dc4634a9c7d824cb33e7ad.bindPopup(popup_ec169cba970a45538cbe4471b7edf72d)
+        ;
+
+        
+    
+    
+            var marker_682a60aa03514da6adf335ba15154c18 = L.marker(
+                [21.383333333333262, 76.56666666666662],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_17bf25668aa342638da48e6f4815decc = L.popup({"maxWidth": 1000});
+
+        
+            var html_6ea157be0a6740b096bf4d6c83f44571 = $(`<div id="html_6ea157be0a6740b096bf4d6c83f44571" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Khaknar District Burhanpur <br>WQI: 76.89</div>`)[0];
+            popup_17bf25668aa342638da48e6f4815decc.setContent(html_6ea157be0a6740b096bf4d6c83f44571);
+        
+
+        marker_682a60aa03514da6adf335ba15154c18.bindPopup(popup_17bf25668aa342638da48e6f4815decc)
+        ;
+
+        
+    
+    
+            var marker_4d4d352af3514fb4b8b5a634d6fcd441 = L.marker(
+                [18.607222222222266, 79.84055555555584],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_693fb7eaa2964a0bb0ea77653edb4b04 = L.popup({"maxWidth": 1000});
+
+        
+            var html_f62c0f98fe2145acaf7b8e1eba5aa9ab = $(`<div id="html_f62c0f98fe2145acaf7b8e1eba5aa9ab" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Kuyyuru <br>WQI: 76.22</div>`)[0];
+            popup_693fb7eaa2964a0bb0ea77653edb4b04.setContent(html_f62c0f98fe2145acaf7b8e1eba5aa9ab);
+        
+
+        marker_4d4d352af3514fb4b8b5a634d6fcd441.bindPopup(popup_693fb7eaa2964a0bb0ea77653edb4b04)
+        ;
+
+        
+    
+    
+            var marker_100bdebd0ecc41059dafec420e905f8e = L.marker(
+                [10.958333333333274, 78.45000000000013],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_bb148150238d446a987b54bcd83575f2 = L.popup({"maxWidth": 1000});
+
+        
+            var html_4e64f128e0274046bda877086f89ba5b = $(`<div id="html_4e64f128e0274046bda877086f89ba5b" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Musiri <br>WQI: 77.18</div>`)[0];
+            popup_bb148150238d446a987b54bcd83575f2.setContent(html_4e64f128e0274046bda877086f89ba5b);
+        
+
+        marker_100bdebd0ecc41059dafec420e905f8e.bindPopup(popup_bb148150238d446a987b54bcd83575f2)
+        ;
+
+        
+    
+    
+            var marker_d6de3a13339944b18ddbdccd2de4908c = L.marker(
+                [8.58333333333331, 77.16666666666663],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_de4d9cf11729414c8b6d5b2b424ca1db = L.popup({"maxWidth": 1000});
+
+        
+            var html_b5edc900d902444d9b23c430d1792f3d = $(`<div id="html_b5edc900d902444d9b23c430d1792f3d" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Panampatta <br>WQI: 73.31</div>`)[0];
+            popup_de4d9cf11729414c8b6d5b2b424ca1db.setContent(html_b5edc900d902444d9b23c430d1792f3d);
+        
+
+        marker_d6de3a13339944b18ddbdccd2de4908c.bindPopup(popup_de4d9cf11729414c8b6d5b2b424ca1db)
+        ;
+
+        
+    
+    
+            var marker_3924637ad66b43af9f7bef032fd3cf0a = L.marker(
+                [16.666666666666636, 79.75],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_70d60fda47f345d487a2f81e0d00fae6 = L.popup({"maxWidth": 1000});
+
+        
+            var html_861c5e2e067c477c9f7195da43626f3c = $(`<div id="html_861c5e2e067c477c9f7195da43626f3c" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Peddavoora <br>WQI: 76.13</div>`)[0];
+            popup_70d60fda47f345d487a2f81e0d00fae6.setContent(html_861c5e2e067c477c9f7195da43626f3c);
+        
+
+        marker_3924637ad66b43af9f7bef032fd3cf0a.bindPopup(popup_70d60fda47f345d487a2f81e0d00fae6)
+        ;
+
+        
+    
+    
+            var marker_f892302bb08a48d8a972a327ae68536d = L.marker(
+                [21.06666666666665, 76.56666666666675],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_9ea97b178c1741ec9eedf472c0ae52f9 = L.popup({"maxWidth": 1000});
+
+        
+            var html_c041cacf12224698a3c5aaa92a32bfa1 = $(`<div id="html_c041cacf12224698a3c5aaa92a32bfa1" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Shri Rao Prajapati <br>WQI: 76.08</div>`)[0];
+            popup_9ea97b178c1741ec9eedf472c0ae52f9.setContent(html_c041cacf12224698a3c5aaa92a32bfa1);
+        
+
+        marker_f892302bb08a48d8a972a327ae68536d.bindPopup(popup_9ea97b178c1741ec9eedf472c0ae52f9)
+        ;
+
+        
+    
+    
+            var marker_b78fbfd225ae4c91ab9fa175b2b1c227 = L.marker(
+                [18.23166666666665, 80.31444444444426],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_515b4f0cddcb46e69c7aef09372f77c5 = L.popup({"maxWidth": 1000});
+
+        
+            var html_596ae350c0ba4e99859626033af79db9 = $(`<div id="html_596ae350c0ba4e99859626033af79db9" style="width: 100.0%; height: 100.0%;">Station Name: Well - at Tadavai <br>WQI: 75.59</div>`)[0];
+            popup_515b4f0cddcb46e69c7aef09372f77c5.setContent(html_596ae350c0ba4e99859626033af79db9);
+        
+
+        marker_b78fbfd225ae4c91ab9fa175b2b1c227.bindPopup(popup_515b4f0cddcb46e69c7aef09372f77c5)
+        ;
+
+        
+    
+    
+            var marker_506709f4cce544f0aca891c57f27dcb5 = L.marker(
+                [23.08333333333328, 72.63333333333338],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_ea5eaa2032e64669acb2183ed4cf6581 = L.popup({"maxWidth": 1000});
+
+        
+            var html_ecb420b9ec6c4081b03dd04a05d921ad = $(`<div id="html_ecb420b9ec6c4081b03dd04a05d921ad" style="width: 100.0%; height: 100.0%;">Station Name: Well - in Ahmedabad <br>WQI: 75.45</div>`)[0];
+            popup_ea5eaa2032e64669acb2183ed4cf6581.setContent(html_ecb420b9ec6c4081b03dd04a05d921ad);
+        
+
+        marker_506709f4cce544f0aca891c57f27dcb5.bindPopup(popup_ea5eaa2032e64669acb2183ed4cf6581)
+        ;
+
+        
+    
+    
+            var marker_642643c3052f453ea4bc140ce7ab769d = L.marker(
+                [22.166666666666714, 73.83333333333323],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_7ebf951706e7496eb6e145ad026415d3 = L.popup({"maxWidth": 1000});
+
+        
+            var html_9bc38829cce8407387ad99bdc53ca5fb = $(`<div id="html_9bc38829cce8407387ad99bdc53ca5fb" style="width: 100.0%; height: 100.0%;">Station Name: Well - in Baroda <br>WQI: 74.93</div>`)[0];
+            popup_7ebf951706e7496eb6e145ad026415d3.setContent(html_9bc38829cce8407387ad99bdc53ca5fb);
+        
+
+        marker_642643c3052f453ea4bc140ce7ab769d.bindPopup(popup_7ebf951706e7496eb6e145ad026415d3)
+        ;
+
+        
+    
+    
+            var marker_e4060ca6e0494a74a67850a544e18ed2 = L.marker(
+                [16.516666666666744, 80.61666666666677],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_51e5a557ee0d47559d939e286fe86808 = L.popup({"maxWidth": 1000});
+
+        
+            var html_b0ea044d7a1a48fa9da8e9ce4545c548 = $(`<div id="html_b0ea044d7a1a48fa9da8e9ce4545c548" style="width: 100.0%; height: 100.0%;">Station Name: Well - in Vijayawada <br>WQI: 75.44</div>`)[0];
+            popup_51e5a557ee0d47559d939e286fe86808.setContent(html_b0ea044d7a1a48fa9da8e9ce4545c548);
+        
+
+        marker_e4060ca6e0494a74a67850a544e18ed2.bindPopup(popup_51e5a557ee0d47559d939e286fe86808)
+        ;
+
+        
+    
+    
+            var marker_96207b76625d486fa9fa50fb1705f330 = L.marker(
+                [15.516666666666682, 73.90000000000006],
+                {}
+            ).addTo(marker_cluster_f9a070841c854e728886bb3d8dea8bf5);
+        
+    
+        var popup_02652b7c07324f758d47e532d34b1748 = L.popup({"maxWidth": 1000});
+
+        
+            var html_e08c89e423c349ddb2fa58a20632ad9e = $(`<div id="html_e08c89e423c349ddb2fa58a20632ad9e" style="width: 100.0%; height: 100.0%;">Station Name: Zuari River - downstream Kumbarjria <br>WQI: 72.45</div>`)[0];
+            popup_02652b7c07324f758d47e532d34b1748.setContent(html_e08c89e423c349ddb2fa58a20632ad9e);
+        
+
+        marker_96207b76625d486fa9fa50fb1705f330.bindPopup(popup_02652b7c07324f758d47e532d34b1748)
+        ;
+
+        
+    
+</script>

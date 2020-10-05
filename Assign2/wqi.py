@@ -1,5 +1,6 @@
 import math
 import numpy as np
+import normalizedQValue
 
 def q1(attr):
     ph =0.11
@@ -9,11 +10,22 @@ def q1(attr):
     nitrates=0.10
     fecalcol =0.16
     # assuming we have q normalized values
-    # print(attr["ph"],attr["temp"],attr["turb"],attr["tdv"],attr["nitrates"],attr["fecalcol"])
+    atts = ["ph", "temp", "turb","tdv","nitrates","fecalcol"]
+    default_vals= [7,30,0,0,0,0]
+    send_vals = []
+    for i,at in enumerate(atts):
+        if at in attr:
+            send_vals.append(attr[at])
+        else:
+            send_vals.append(default_vals[i])
+    
+    q_vals = normalizedQValue.normalizeQValue(default_vals[0],default_vals[1],default_vals[2],default_vals[3],default_vals[4],default_vals[5])
+    for i,at in enumerate(atts):
+        if at in attr:
+            attr[at] = q_vals[i]
 
     denom = 0
     num = 0
-    # print(attr)
     if "ph" in attr and attr["ph"]!= np.nan:
         num+= ph*attr["ph"]
         denom+=ph
@@ -41,7 +53,6 @@ def q1(attr):
     if denom==0:
         return -1
     
-    # print(num, denom)
     wqi = num/denom
 
     return wqi
@@ -191,22 +202,19 @@ def q2(attr):
 
     return wqi
 
-        
+
 def q1_main(e1,e2,e3,e4,e5,e6):
     params = {}
-    params["ph"] = float(e1)
-    params["temp"] = float(e2)
-    params["turb"] = float(e3)
-    params["tdv"] = float(e4)
-    params["nitrates"] = float(e5)
-    params["fecalcol"] = float(e6)
+    ets = [e1,e2,e3,e4,e5,e6]
+    atts = ["ph", "temp", "turb","tdv","nitrates","fecalcol"]
+    for i in range(len(ets)):
+        if not np.isnan(ets[i]):
+            params[atts[i]] = float(ets[i])
 
     return q1(params)
 
-        
 def q2_main(ets):
     params = {}
-    # print(ets[4:])
     # use the same atts array as in gui.py
     atts = ["Turbidity", "pH","Color","DO", "BOD","TDS", "Hardness","Cl","No3","So4","Coliform","As","F"]
 

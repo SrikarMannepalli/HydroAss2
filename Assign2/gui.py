@@ -67,6 +67,7 @@ def add_tab1(tab1):
 					csv['NIT'] = 0.5
 				if 'FEC' not in csv:
 					csv['FEC'] = 0
+				# print(csv.iloc[i, 6],csv.iloc[i, 3],csv.iloc[i, 11],csv.iloc[i, 5],csv.iloc[i, 18],csv.iloc[i, 19])
 				qual_ind = wqi.q1_main(csv.iloc[i, 6],csv.iloc[i, 3],csv.iloc[i, 11],csv.iloc[i, 5],csv.iloc[i, 18],csv.iloc[i, 19])
 				# tk.Label(tab1,text=qual_ind).grid(row=i,column=7)
 				if qual_ind>=0 and qual_ind<25:
