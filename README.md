@@ -1,3 +1,8 @@
 # HydroAss2
 
-## Run - python3 gui.py
+# TEAM
+### Srikar Mannepalli (20171138)
+### Ch Pavan Kalyan Reddy (20171205)
+### Vivek Nannaka (20171182)
+### Sanchit Saini (20171191)
+### Prajwal Krishna Maitin ()

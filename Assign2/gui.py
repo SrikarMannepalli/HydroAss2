@@ -39,6 +39,7 @@ tabControl.pack(expand = 1, fill ="both")
 csv =None
 csv_q2 = None
 csv_q3 = None
+df_q3 = None
 
 def add_tab1(tab1, tab4):
 	head = tk.Label(tab1, text="TASK 1", font=("Verdana", 20))
@@ -166,6 +167,7 @@ def add_tab2(tab2, tab4):
 				# print(csv_q2.iloc[i, 0], csv_q2.iloc[i, 2]) 
 				pars = [csv_q2.iloc[i,j] for j in range(4, 17)]
 				qual_ind = wqi.q2_main(pars)
+				# print(qual_ind)
 				if qual_ind>=0 and qual_ind<=1:
 					wq_clss = classes2[4]
 				elif qual_ind>1 and qual_ind<=2:
@@ -174,7 +176,7 @@ def add_tab2(tab2, tab4):
 					wq_clss = classes2[2]
 				elif qual_ind>4 and qual_ind<=8:
 					wq_clss = classes2[1]
-				elif qual_ind>8 and qual_ind<=16:
+				elif qual_ind>8:
 					wq_clss = classes2[0]
 				qual_ind_vec.append(qual_ind)
 				qual_cls_vec.append(wq_clss)
@@ -191,15 +193,16 @@ def add_tab2(tab2, tab4):
 		else:
 			evals = [float(et.get()) for et in ets[:-1]]
 			qual_ind = wqi.q2_main(evals)
+			print(qual_ind)
 			if qual_ind>=0 and qual_ind<=1:
-					wq_clss = classes2[4]
+				wq_clss = classes2[4]
 			elif qual_ind>1 and qual_ind<=2:
 				wq_clss = classes2[3]
 			elif qual_ind>2 and qual_ind<=4:
 				wq_clss = classes2[2]
 			elif qual_ind>4 and qual_ind<=8:
 				wq_clss = classes2[1]
-			elif qual_ind>8 and qual_ind<=16:
+			elif qual_ind>8:
 				wq_clss = classes2[0]
     			
     				
@@ -232,14 +235,20 @@ def add_tab3(tab3, tab4):
 	ent = tk.Entry(tab3)
 	ent.place(x=450, y=500)
 
-	if csv_q3 is not None:
-		df = wqi.q3_main(csv_q3)
+	# df = pd.DataFrame()
+	# if csv_q3 is not None:
+	# 	df = wqi.q3_main(csv_q3)
 
-	qt = tk.Button(tab2, text='QUIT', command=tab2.quit)
+	def show_entry_fields():
+		# if csv_q3 is not None:
+		global df_q3
+		df_q3 = wqi.q3_main(csv_q3)
+		
+	qt = tk.Button(tab3, text='QUIT', command=tab3.quit)
 	qt.place(x=500, y=540)
-	# calc = tk.Button(tab2, text='CALCULATE', command=show_entry_fields)
-	# calc.place(x=350, y=540)
-	viz = tk.Button(tab2, text='VISUALIZE', command=lambda:get_vis_q3(tab4, df))
+	calc = tk.Button(tab3, text='CALCULATE', command=show_entry_fields)
+	calc.place(x=350, y=540)
+	viz = tk.Button(tab3, text='VISUALIZE', command=lambda:get_vis_q3(tab4, df_q3))
 	viz.place(x=600, y=540)
 
 def get_vis(tab4, df):
@@ -291,7 +300,7 @@ def get_vis_q2(tab4, df):
 		labs.append(classes.index(clsa))
 	lats = []
 	longs = []
-	geolocator = Nominatim(user_agent="My Project")
+	# geolocator = Nominatim(user_agent="My Project")
 	# print(df_new)
 	scatter = ax.scatter(df_new["longs"], df_new["lats"],c=labs,s=10)
 	legend1 = ax.legend(*scatter.legend_elements(),
@@ -309,7 +318,7 @@ def get_vis_q2(tab4, df):
 
 def get_vis_q3(tab4, df):
 	tabControl.select(tab4)
-
+	# print(df)
 	fig, ax = plt.subplots()
 	df_new = df[['Station', 'Sample Date', 'WQI']]
 
@@ -317,9 +326,9 @@ def get_vis_q3(tab4, df):
 
 	final = df_new.groupby('Sample Date').mean().reset_index()
 
-
-	ax = final.plot.bar(x='Sample Date', y='WQI', rot=0, figsize = (15, 15))
-
+	# print(final)
+	# ax = final.plot.bar(x="Sample Date", y="WQI", rot=0, figsize = (15, 15))
+	plt.bar(x=final["Sample Date"],height=final["WQI"])
 	canvas = FigureCanvasTkAgg(fig, master=tab4)
 	canvas.draw()
 	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)

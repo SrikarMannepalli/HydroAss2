@@ -211,15 +211,15 @@ def q2(attr):
     return wqi
 
 def q3_main(df):
-    df_train = pd.read_csv('./out.csv')
-    df_train = df_train.dropna()
+    df= pd.read_csv('./1.csv')
+    df_train = df.dropna()
 
     x_train = df_train[df_train.columns[3:15]]
     y_train = df_train['WQI']
 
-    x_test = df[df.columns[3:15]]
+    x_test = df_train[df_train.columns[3:15]]
 
-    sc_X = StandardScaler()
+    sc_X = StandardScaler() 
     x_train = sc_X.fit_transform(x_train)
     x_test = sc_X.transform(x_test)
 
@@ -228,10 +228,11 @@ def q3_main(df):
     regressor_gb.fit(x_train, y_train) 
     y_pred = regressor_gb.predict(x_test)
 
-
+    # print(y_pred)
     df_val = pd.DataFrame({'Predicted WQI': y_pred})
     df['WQI'] = df_val
 
+    # print(df)
     return df
 
 
