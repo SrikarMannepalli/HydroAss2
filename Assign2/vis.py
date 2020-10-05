@@ -27,7 +27,8 @@ def q1(df):
     legend1 = ax.legend(*scatter.legend_elements(),
                 loc="lower left", title="Classes")
     ax.add_artist(legend1)
-    plt.show()
+    # plt.show()
+    return fig
 
 # def q1(df):
 #     df_new = df[['Name', 'lat', 'long', 'WQI', 'WQC']]

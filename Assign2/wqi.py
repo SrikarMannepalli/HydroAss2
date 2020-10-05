@@ -19,11 +19,12 @@ def q1(attr):
         else:
             send_vals.append(default_vals[i])
     
-    q_vals = normalizedQValue.normalizeQValue(default_vals[0],default_vals[1],default_vals[2],default_vals[3],default_vals[4],default_vals[5])
+    q_vals = normalizedQValue.normalizeQValue(send_vals[0],send_vals[1],send_vals[2],send_vals[3],send_vals[4],send_vals[5])
     for i,at in enumerate(atts):
         if at in attr:
             attr[at] = q_vals[i]
 
+    # print(attr)
     denom = 0
     num = 0
     if "ph" in attr and attr["ph"]!= np.nan:
@@ -223,5 +224,5 @@ def q2_main(ets):
             params[atts[i]] = float(ets[i])
 
     # params['Turbidity'] = ets[0]
-    print(params)
+    # print(params)
     return q2(params)

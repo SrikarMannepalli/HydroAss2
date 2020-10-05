@@ -1,5 +1,5 @@
 import wqi
-import vis
+# import vis
 import tkinter as tk
 from tkinter import ttk 
 from tkinter import * 
@@ -8,6 +8,14 @@ from tkinter import filedialog
 import pandas as pd
 import homepage
 import numpy as np
+import matplotlib
+matplotlib.use('TkAgg')
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from matplotlib.backend_bases import key_press_handler
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+import matplotlib.image as mpimg
+from geopy.geocoders import Nominatim
 
 root = tk.Tk()
 root.wm_title("Water Quality Index Estimation Tool")
@@ -19,10 +27,12 @@ home = ttk.Frame(tabControl)
 tab1 = ttk.Frame(tabControl) 
 tab2 = ttk.Frame(tabControl) 
 tab3 = ttk.Frame(tabControl) 
+tab4 = ttk.Frame(tabControl) 
 tabControl.add(home, text ='HOME') 
 tabControl.add(tab1, text ='TASK 1') 
 tabControl.add(tab2, text ='TASK 2') 
 tabControl.add(tab3, text ='TASK 3') 
+tabControl.add(tab4, text ='VIZ') 
 
 tabControl.pack(expand = 1, fill ="both") 
 
@@ -30,7 +40,7 @@ csv =None
 csv_q2 = None
 csv_q3 = None
 
-def add_tab1(tab1):
+def add_tab1(tab1, tab4):
 	head = tk.Label(tab1, text="TASK 1", font=("Verdana", 20))
 	head.place(x=400,y=10)
 
@@ -90,7 +100,7 @@ def add_tab1(tab1):
 			if not outputfname:
 				outputfname = "out.csv"
 			csv.to_csv(outputfname, index=False)
-			vis.q1(csv)
+			# vis.q1(csv)
 		else:
 			evals = [float(et.get()) for et in ets[:-1]]
 			qual_ind = wqi.q1_main(evals[0],evals[1],evals[2],evals[3],evals[4],evals[5])
@@ -119,9 +129,11 @@ def add_tab1(tab1):
 	qt.place(x=500, y=500)
 	calc = tk.Button(tab1, text='CALCULATE', command=show_entry_fields)
 	calc.place(x=350, y=500)
+	viz = tk.Button(tab1, text='VISUALIZE', command=lambda:get_vis(tab4, csv))
+	viz.place(x=600, y=500)
 
 
-def add_tab2(tab2):
+def add_tab2(tab2, tab4):
 	head = tk.Label(tab2, text="TASK 2", font=("Verdana", 20))
 	head.place(x=400,y=10)
 	atts = ["Turbidity", "pH","Color","DO", "BOD","TDS", "Hardness","Cl","No3","So4","Coliform","As","F"]
@@ -175,7 +187,7 @@ def add_tab2(tab2):
 				outputfname = "out.csv"
 			csv_q2.to_csv(outputfname, index=False)
 
-			vis.q2(csv_q2)
+			# vis.q2(csv_q2)
 		else:
 			evals = [float(et.get()) for et in ets[:-1]]
 			qual_ind = wqi.q2_main(evals)
@@ -204,8 +216,10 @@ def add_tab2(tab2):
 	qt.place(x=500, y=540)
 	calc = tk.Button(tab2, text='CALCULATE', command=show_entry_fields)
 	calc.place(x=350, y=540)
+	viz = tk.Button(tab2, text='VISUALIZE', command=lambda:get_vis_q2(tab4, csv_q2))
+	viz.place(x=600, y=540)
 
-def add_tab3(tab3):
+def add_tab3(tab3, tab4):
 	def open_file():
 		file = filedialog.askopenfilename(title = "choose your file",filetypes =[('csv files','*.csv')])
 		global csv_q3
@@ -218,8 +232,74 @@ def add_tab3(tab3):
 	ent = tk.Entry(tab3)
 	ent.place(x=450, y=500)
 
+def get_vis(tab4, df):
+    # pass
+	# print("hi")
+	tabControl.select(tab4)
+	df_new = df[['Name', 'lat', 'long', 'WQI', 'WQC']]
+	# print(df_new)
+	# print(df.loc)
+	# df_final = df.loc[df.groupby(["Name"])["WQI"].idxmin()]
+	df_final = df_new
+	# df_final = df_new.groupby(['Name'])['WQI'].idxmax().reset_index()
+
+	# print(df_final)
+	fig, ax = plt.subplots()
+	ind_img = mpimg.imread('./india-rivers-map.jpg')
+	plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
+	# labels = ["C1", "C2", "C3", "C4", "C5"]
+	classes = ["Very Bad", "Bad", "Medium", "Good", "Excellent"]
+	labs=[]
+	for clsa in df_final["WQC"]:
+		labs.append(classes.index(clsa))
+	scatter = ax.scatter(df_final["long"], df_final["lat"],c=labs,s=10)
+	legend1 = ax.legend(*scatter.legend_elements(),
+                loc="lower left", title="Classes")
+	ax.add_artist(legend1)
+
+
+	canvas = FigureCanvasTkAgg(fig, master=tab4)
+	canvas.draw()
+	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+
+	toolbar = NavigationToolbar2Tk(canvas, tab4)
+	toolbar.update()
+	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+
+def get_vis_q2(tab4, df):
+	tabControl.select(tab4)
+	df_new = df[['STATION', 'OIP', 'WQC','lats','longs']]
+
+	fig, ax = plt.subplots()
+	ind_img = mpimg.imread('./india-rivers-map.jpg')
+	plt.imshow(ind_img,extent=[68.7, 96.25, 7.4, 37.6], alpha=0.75)
+	plt.imshow(ind_img, alpha=0.75)
+	# # labels = ["C1", "C2", "C3", "C4", "C5"]
+	classes = ["Heavily polluted", "Polluted", "Slightly polluted", "Acceptable", "Excellent"]
+	labs=[]
+	for clsa in df_new["WQC"]:
+		labs.append(classes.index(clsa))
+	lats = []
+	longs = []
+	geolocator = Nominatim(user_agent="My Project")
+	# print(df_new)
+	scatter = ax.scatter(df_new["longs"], df_new["lats"],c=labs,s=10)
+	legend1 = ax.legend(*scatter.legend_elements(),
+                loc="lower left", title="Classes")
+	ax.add_artist(legend1)
+
+
+	canvas = FigureCanvasTkAgg(fig, master=tab4)
+	canvas.draw()
+	canvas.get_tk_widget().pack(side=TOP, fill=BOTH, expand=1)
+
+	toolbar = NavigationToolbar2Tk(canvas, tab4)
+	toolbar.update()
+	canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=1)
+
 homepage.add_home(home)
-add_tab1(tab1)
-add_tab2(tab2)
-add_tab3(tab3)
+add_tab1(tab1,tab4)
+add_tab2(tab2,tab4)
+add_tab3(tab3,tab4)
+# get_vis(tab4)
 root.mainloop()
